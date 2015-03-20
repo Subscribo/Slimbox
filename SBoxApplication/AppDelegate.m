@@ -32,11 +32,11 @@
         NSNumber *number = (NSNumber*)next;
         if (![number boolValue])
         {
-            [[ApplicationManager instance] execute:@"HealthStream"];
+            [[ApplicationManager instance] execute:@"Login"];
         }
         else
         {
-            [[ApplicationManager instance] execute:@"HealthStream"];            
+            [[ApplicationManager instance] execute:@"Login"];            
         }
     }];
     
