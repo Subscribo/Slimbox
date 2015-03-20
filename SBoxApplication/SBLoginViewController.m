@@ -31,8 +31,8 @@
     [super viewDidLoad];
 
     self.slideShow.imageNames = @[@"#log#pic#01.png", @"#log#pic#02.png", @"#log#pic#03.png", @"#log#pic#04.png", @"#log#pic#05.png"];
-    self.movingText1.strings = @[@"", @"Bewusst", @"Einfach", @"Ein langes", @"Gesund"];
-    self.movingText.strings = @[@"SLIM BOX", @"LEBEN", @"ABNEHMEN", @"LEBEN", @"AUSSEHEN"];
+    self.movingText1.strings = [@[@"", @"Bewusst", @"Einfach", @"Ein langes", @"Gesund"] mutableCopy];
+    self.movingText.strings = [@[@"SLIM BOX", @"LEBEN", @"ABNEHMEN", @"LEBEN", @"AUSSEHEN"] mutableCopy];
     [self.movingText setFont:[UIFont fontWithName:@"HelveticaNeue-LightItalic" size:50] color:[UIColor whiteColor]];
     
     [self.slideShow start];
