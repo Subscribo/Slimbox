@@ -118,8 +118,8 @@ Service Login in user with Facebook.
                                          
                                          if (userData[@"birthday"])
                                          {
-                                             NSString *birtdate = userData[@"birthday"];
-                                             user.birthdate = birtdate;
+                                             NSString *birthdate = userData[@"birthday"];
+                                             user.birthdate = birthdate;
                                          }
                                          
                                          // #n: Check for security risks?
