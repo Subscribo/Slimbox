@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>596C8DD5-5FD3-4606-B83A-180FE8031E93</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SBoxApplication</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C3F72059FC71641A75369E1B22C8204BB024F2EB</key>
+		<string>git+ssh://git.dc0.gpaas.net/git.sb.zeissl.eu.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SBoxApplication.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C3F72059FC71641A75369E1B22C8204BB024F2EB</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>git+ssh://git.dc0.gpaas.net/git.sb.zeissl.eu.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C3F72059FC71641A75369E1B22C8204BB024F2EB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C3F72059FC71641A75369E1B22C8204BB024F2EB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>slimbox_februar</string>
+		</dict>
+	</array>
+</dict>
+</plist>

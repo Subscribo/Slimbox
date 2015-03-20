@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C99d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MetaMenuItem" rowHeight="85" id="jTP-jG-ERB" customClass="MetaMenuTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jTP-jG-ERB" id="qQa-7s-XVm">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qI3-l5-ohr">
+                        <rect key="frame" x="0.0" y="-3" width="320" height="90"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ad-V2-UAK">
+                                <rect key="frame" x="70" y="29" width="61" height="32"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="MetaMenuIconHealth.png" translatesAutoresizingMaskIntoConstraints="NO" id="mTb-HM-XhR">
+                                <rect key="frame" x="20" y="26" width="40" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="TUk-IZ-nI3"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="hfA-Zn-0Oo"/>
+                                    <constraint firstAttribute="height" constant="40" id="nyf-lS-GTo"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="tYm-f2-8II"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.48452185149999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="0ad-V2-UAK" firstAttribute="leading" secondItem="mTb-HM-XhR" secondAttribute="trailing" constant="10" id="8NM-cp-zyD"/>
+                            <constraint firstAttribute="height" constant="89" id="A7x-Ph-HQw"/>
+                            <constraint firstItem="mTb-HM-XhR" firstAttribute="top" secondItem="qI3-l5-ohr" secondAttribute="top" constant="25" id="P0y-na-4cs"/>
+                            <constraint firstItem="mTb-HM-XhR" firstAttribute="leading" secondItem="qI3-l5-ohr" secondAttribute="leading" constant="20" id="duW-wo-Bs4"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.31891134510000002" green="0.31891134510000002" blue="0.31891134510000002" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstAttribute="topMargin" secondItem="qI3-l5-ohr" secondAttribute="top" constant="11" id="7D3-h2-UC8"/>
+                    <constraint firstItem="qI3-l5-ohr" firstAttribute="leading" secondItem="qQa-7s-XVm" secondAttribute="leadingMargin" constant="-8" id="QEl-Hr-W4b"/>
+                    <constraint firstItem="qI3-l5-ohr" firstAttribute="bottom" secondItem="qQa-7s-XVm" secondAttribute="bottomMargin" constant="10" id="guh-Wf-pM5"/>
+                    <constraint firstItem="qI3-l5-ohr" firstAttribute="trailing" secondItem="qQa-7s-XVm" secondAttribute="trailingMargin" constant="8" id="uOY-L5-WBN"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="background" destination="qI3-l5-ohr" id="rwz-aG-PMc"/>
+                <outlet property="icon" destination="mTb-HM-XhR" id="eHz-uI-8qC"/>
+                <outlet property="name" destination="0ad-V2-UAK" id="az0-SO-w34"/>
+            </connections>
+            <point key="canvasLocation" x="363" y="224.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="MetaMenuIconHealth.png" width="310" height="311"/>
+    </resources>
+</document>

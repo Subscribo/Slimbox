@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>MetaMenuItems</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>Healthstream</string>
+			<key>Execute</key>
+			<string>HealthStream</string>
+			<key>Color</key>
+			<string>282DC6</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Ernährungsplaner</string>
+			<key>Execute</key>
+			<string>Planner</string>
+			<key>Color</key>
+			<string>FF2600</string>
+		</dict>
+	</array>
+</dict>
+</plist>

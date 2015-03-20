@@ -1,0 +1,301 @@
+/*
+ * SB - Engine
+ * Author:		Gerhard Zeissl
+ * Date:		01012015
+ *
+ */
+
+#import "ApplicationManager.h"
+#import "Singletone.h"
+#import "AppDelegate.h"
+#import "SBApplicationModel.h"
+#import "ResourceManager.h"
+
+//Controller
+#import "SBDebugViewController.h"
+
+/**
+ */
+@interface ApplicationManager ()
+@property (nonatomic, strong) UIWindow *parentWindow;
+@property (nonatomic, strong) UIView *offscreenCanvasView;
+@property (nonatomic, strong) UIViewController *offscreenCanvasViewController;
+@property (nonatomic, strong) UIView *applicationView;
+@property (nonatomic, strong) UIView *frameworkView;
+@property (nonatomic, strong) UIViewController *activeController;
+@property (nonatomic, strong) UIWebView *webView;
+@property (nonatomic, strong) UISwipeGestureRecognizer *gestureSwipeRight;
+@property (nonatomic, strong) UISwipeGestureRecognizer *gestureSwipeLeft;
+@property (nonatomic) BOOL isMetaMenuOpen;
+@end
+
+@implementation ApplicationManager
+SINGLETON(ApplicationManager)
+
+/**
+ Init ApplicationManager implementation.
+ */
+- (id)initSingletone
+{
+    if ((self = [super init]))
+    {
+        // Setup Window
+        self.parentWindow = [[UIWindow alloc] initWithFrame:[ApplicationManager getApplicationBounds]];
+
+        // Setup Manager
+        [[ApplicationManager instance] execute:@"Intro"];
+        [UIApplication sharedApplication].statusBarHidden = YES;
+        
+        self.view = [[UIView alloc] initWithFrame:[ApplicationManager getApplicationBounds]];
+        self.offscreenCanvasView = [[UIView alloc] initWithFrame:[ApplicationManager getApplicationBounds]];
+        self.applicationView = [[UIView alloc] initWithFrame:[ApplicationManager getApplicationBounds]];
+        self.frameworkView = [[UIView alloc] initWithFrame:[ApplicationManager getApplicationBounds]];
+        self.frameworkView.hidden = TRUE;
+        self.applicationView.backgroundColor = [UIColor clearColor];
+
+        [self.view addSubview:self.offscreenCanvasView];
+        [self.view addSubview:self.applicationView];
+        [self.view addSubview:self.frameworkView];
+        
+        self.parentWindow.rootViewController = self;
+        [self.parentWindow makeKeyAndVisible];
+        return self;
+    }
+    return self;
+}
+
+/**
+ Initalizes the offscreenCanvas.
+ */
+- (void)setupOffscreenCanvas
+{
+    self.offscreenCanvasViewController = [[UIViewController alloc] initWithNibName:@"TSXMenuView" bundle:nil];
+    [self.offscreenCanvasView addSubview:self.offscreenCanvasViewController.view];
+    
+    /* Gestures to trigger menu */
+    self.gestureSwipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeMetaMenu:)];
+    self.gestureSwipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.applicationView addGestureRecognizer:self.gestureSwipeRight];
+    self.gestureSwipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeMetaMenu:)];
+    self.gestureSwipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.applicationView addGestureRecognizer:self.gestureSwipeLeft];
+}
+
+
+#pragma mark - View Lifecylce
+
+/**
+ Handles screen-rotation.
+ */
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+/**
+ Hides StatusBar.
+ */
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
+#pragma mark - Application Management
+
+/**
+ Adds a view to the ApplicationView.
+ */
+- (void)applicationViewAddView:(UIView*)view
+{
+    [self.applicationView addSubview:view];
+}
+
+/**
+ Adds a view to the ApplicationView.
+ */
+- (void)frameworkViewAddView:(UIView*)view
+{
+    [self.frameworkView addSubview:view];
+}
+
+/**
+ Removes all views from the ApplicationView.
+ */
+- (void)applicationViewRemoveAllViews
+{
+    for (UIView *view in self.applicationView.subviews)
+    {
+        [view removeFromSuperview];
+    }
+}
+
+/**
+ Removes FrameworkView.
+ */
+- (void)frameworkViewRemoveAllViews
+{
+    for (UIView *view in self.frameworkView.subviews)
+    {
+        [view removeFromSuperview];
+    }
+}
+
+
+#pragma mark - Application Resource-Instances
+
+
+<<<<<<< HEAD
++ (SBApplicationModel*) getModel
+{
+    return [SBApplicationModel instance];
+}
+
+
+//- (ResourceManager*) getResourceManager
+//{
+//    
+//}
+=======
+//- (SBApplicationModel*) getModel
+//{
+//    return [SBApplicationModel instance];
+//}
+
+
+- (ResourceManager*)getResourceManager
+{
+	return [[ResourceManager alloc] initSingletone];
+}
+>>>>>>> ee9ceac76ac3497e6bf3084f1bf869b63f194959
+
+#pragma mark - Navigation-Layer
+
+/**
+ Executes a ViewController.
+ */
+- (void)execute:(NSString*)name
+{
+    @synchronized(self)
+    {
+        if (self.activeController != nil)
+        {
+            [[ApplicationManager instance]applicationViewRemoveAllViews];
+            self.activeController = nil;
+        }
+        
+        if ([name isEqual:@"DebugView"])
+        {
+            [self setControllerWithName:@"DebugView"];
+            [self show];
+        }
+    }
+}
+
+/**
+ Returns Controller for Application Module.
+ */
+-  (void)setControllerWithName:(NSString*)nameNIB
+{
+    if ([nameNIB isEqual:@"DebugView"])
+    {
+        self.activeController = [[SBDebugViewController alloc] initWithNibName:@"SBDebugViewController" bundle:nil];
+    }
+}
+
+/**
+ Sets current UIViewController.
+ */
+- (void)show
+{
+    [[ApplicationManager instance] applicationViewRemoveAllViews];
+    [self applicationViewAddView:self.activeController.view];
+}
+
+#pragma mark - Application Properties (Class Methods)
+
+/**
+ Gets Application Wide Orientation Frame.
+ */
++ (CGRect) getApplicationFrame
+{
+    return [[UIScreen mainScreen] applicationFrame];
+}
+
+/**
+ Returns the screen bounds for dynamic layouts.
+ */
++ (CGRect)getApplicationBounds
+{
+    return [[UIScreen mainScreen] bounds];
+}
+
+/**
+ Gets application bounds.
+ */
++ (CGRect)getScreenFrame
+{
+    return [UIScreen mainScreen].bounds;
+}
+
+/**
+ Gets screen height.
+ */
++ (int)getScreenHeight
+{
+    return [[UIScreen mainScreen] applicationFrame].size.height;
+}
+
+/**
+ Gets screen width.
+ */
++ (int)getScreenWidth
+{
+    return [[UIScreen mainScreen] applicationFrame].size.width;
+}
+
+/**
+ Gets application version.
+ */
++ (NSString *)getApplicationVersion
+{
+    NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
+    return [infoDict objectForKey:@"CFBundleVersion"];
+}
+
+/**
+ Gets application name.
+ */
++ (NSString *)getApplicationName
+{
+    return @"TicketShop20";
+}
+
+/**
+ Get NIB.
+ */
++ (UINib*)getNib:(NSString*)name
+{
+    return [UINib nibWithNibName:name bundle:nil];
+}
+
++ (void) registerTableCell:(NSString*)name tableView:(UITableView*)tableView cellResudeIndentifier:(NSString*)identifier
+{
+    [tableView registerNib:[ApplicationManager getNib:name]forCellReuseIdentifier:identifier];
+}
+
+//Helper function to get a random float
++ (float)randomFloatBetween:(float)smallNumber and:(float)bigNumber {
+    float diff = bigNumber - smallNumber;
+    return (((float) (arc4random() % ((unsigned)RAND_MAX + 1)) / RAND_MAX) * diff) + smallNumber;
+}
+
+
+
+@end

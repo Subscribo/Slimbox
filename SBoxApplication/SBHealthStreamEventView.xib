@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C99d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="171" id="PLk-Jo-awG">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="171"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PLk-Jo-awG" id="g9E-OR-CuE">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zfe-47-757">
+                        <rect key="frame" x="0.0" y="1" width="320" height="170"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEc-Ju-ppZ">
+                                <rect key="frame" x="140" y="132" width="78" height="30"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Posten">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="CookTestImage01.png" translatesAutoresizingMaskIntoConstraints="NO" id="X8g-xv-Xxb">
+                                <rect key="frame" x="0.0" y="1" width="108" height="170"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.035351606610000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="X8g-xv-Xxb" secondAttribute="height" multiplier="54:85" id="Nsl-Wq-p53"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Tafelspitz mit Gemüse " lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWE-By-f6T">
+                                <rect key="frame" x="120" y="12" width="255" height="34"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="260 kcal" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gV3-Qd-9HP">
+                                <rect key="frame" x="120" y="31" width="149" height="61"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xIr-Tq-hj2">
+                                <rect key="frame" x="226" y="132" width="78" height="30"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="78" id="mEy-KR-jsY"/>
+                                </constraints>
+                                <state key="normal" title="Mehr">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="xIr-Tq-hj2" secondAttribute="bottom" constant="8" id="3z0-fL-Ljx"/>
+                            <constraint firstAttribute="bottom" secondItem="X8g-xv-Xxb" secondAttribute="bottom" id="4J4-9c-rbW"/>
+                            <constraint firstItem="gV3-Qd-9HP" firstAttribute="top" secondItem="fWE-By-f6T" secondAttribute="bottom" constant="-15" id="8A0-Xs-rQE"/>
+                            <constraint firstItem="X8g-xv-Xxb" firstAttribute="top" secondItem="Zfe-47-757" secondAttribute="top" id="9ro-br-1WE"/>
+                            <constraint firstItem="xIr-Tq-hj2" firstAttribute="leading" secondItem="ZEc-Ju-ppZ" secondAttribute="trailing" constant="8" id="L3R-0b-zjb"/>
+                            <constraint firstAttribute="trailing" secondItem="xIr-Tq-hj2" secondAttribute="trailing" constant="16" id="MXj-Jj-A9t"/>
+                            <constraint firstItem="gV3-Qd-9HP" firstAttribute="leading" secondItem="X8g-xv-Xxb" secondAttribute="trailing" constant="12" id="dm6-1D-MlY"/>
+                            <constraint firstItem="fWE-By-f6T" firstAttribute="top" secondItem="Zfe-47-757" secondAttribute="top" constant="12" id="iDu-nc-Fid"/>
+                            <constraint firstAttribute="height" constant="170" id="iOF-yV-mSb"/>
+                            <constraint firstItem="X8g-xv-Xxb" firstAttribute="leading" secondItem="Zfe-47-757" secondAttribute="leading" id="jdQ-ER-919"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Zfe-47-757" firstAttribute="top" secondItem="g9E-OR-CuE" secondAttribute="topMargin" constant="-8" id="LSj-4w-8rQ"/>
+                    <constraint firstItem="Zfe-47-757" firstAttribute="leading" secondItem="g9E-OR-CuE" secondAttribute="leadingMargin" constant="-8" id="MAN-uC-GXP"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Zfe-47-757" secondAttribute="trailing" constant="-8" id="rxJ-eX-DhQ"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Zfe-47-757" secondAttribute="bottom" constant="-8" id="sh2-Bo-Vn0"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="445" y="222.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="CookTestImage01.png" width="200" height="200"/>
+    </resources>
+</document>
