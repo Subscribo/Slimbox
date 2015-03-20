@@ -63,7 +63,7 @@
 
 // General dialog values
 @property (nonatomic, strong)IBOutlet UIButton *next;
-@property (nonatomic) BOOL *validated;
+@property (nonatomic) BOOL validated;
 @property (nonatomic, strong) SBApplicationModel *model;
 
 
