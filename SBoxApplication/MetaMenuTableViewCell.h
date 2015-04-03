@@ -14,6 +14,5 @@
 @property (nonatomic, strong) IBOutlet UIImageView *icon;
 
 - (float)getHeight;
-- (IBAction)closeMenu:(id)sender;
 
 @end

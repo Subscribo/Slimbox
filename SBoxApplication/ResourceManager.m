@@ -23,9 +23,9 @@
 @end
 
 @implementation ResourceManager
-SINGLETON(ResourceManager)
+Singleton(ResourceManager)
 
-- (id)initSingletone {
+- (instancetype)initSingleton {
 	self = [super init];
 	
 	if (self) {

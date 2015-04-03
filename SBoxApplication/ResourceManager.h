@@ -8,9 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-#import "Singletone.h"
+#import "Singleton.h"
 @interface ResourceManager : NSObject <CLLocationManagerDelegate>
-SINGLETONE
-
-
+SingletonInit
 @end

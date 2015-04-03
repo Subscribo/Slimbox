@@ -7,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PUser.h"
-#import "Singletone.h"
+#import "Singleton.h"
 #import <ReactiveCocoa.h>
 
 typedef enum {
@@ -16,15 +16,23 @@ typedef enum {
     kSBRegisterWithFacebook
 } kSBRegister;
 
+typedef enum
+{
+    kSBEventsLoadInitital,
+    kSBEventsLoadNext,
+    kSBEventsLoadPrevious
+} kSBEventsLoad;
 
 @interface SBApplicationModel : NSObject
-SINGLETONE
+SingletonInit
 
-@property (nonatomic, strong) PUser *currentUser;
+@property (nonatomic, strong) PUser *currentUser; // Current User Object
+@property (nonatomic, strong) NSMutableArray *hsItemsCache; // Cache which containss all loaded items
 
-- (void)testUser;
 - (void)userLoggedIn:(RACSubject*)subject;
 - (BOOL)getUserObject;
 - (void)createObjectRegisterWith:(kSBRegister)type;
+- (void)loadNext:(RACSubject*)subject option:(kSBEventsLoad)option;
+- (void)setupMockupDataForUser;
 
 @end

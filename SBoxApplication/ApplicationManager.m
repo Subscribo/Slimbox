@@ -6,7 +6,7 @@
  */
 
 #import "ApplicationManager.h"
-#import "Singletone.h"
+#import "Singleton.h"
 #import "AppDelegate.h"
 #import "SBApplicationModel.h"
 #import "ResourceManager.h"
@@ -18,6 +18,7 @@
 #import "SBHealthStreamTableViewController.h"
 #import "SBLoginViewController.h"
 #import "Animation.h"
+#import <MBProgressHUD.h>
 
 /**
  */
@@ -38,12 +39,12 @@
 @end
 
 @implementation ApplicationManager
-SINGLETON(ApplicationManager)
+Singleton(ApplicationManager)
 
 /**
  Init ApplicationManager implementation.
  */
-- (id)initSingletone
+- (id)initSingleton
 {
     if ((self = [super init]))
     {
@@ -166,24 +167,6 @@ SINGLETON(ApplicationManager)
 }
 
 
-/**
- Initalizes the offscreenCanvas.
- */
-- (void)setupOffscreenCanvas
-{
-    self.offscreenCanvasViewController = [[UIViewController alloc] initWithNibName:@"TSXMenuView" bundle:nil];
-    [self.offscreenCanvasView addSubview:self.offscreenCanvasViewController.view];
-    
-    /* Gestures to trigger menu */
-    self.gestureSwipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeMetaMenu:)];
-    self.gestureSwipeRight.direction = UISwipeGestureRecognizerDirectionRight;
-    [self.applicationView addGestureRecognizer:self.gestureSwipeRight];
-    self.gestureSwipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeMetaMenu:)];
-    self.gestureSwipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
-    [self.applicationView addGestureRecognizer:self.gestureSwipeLeft];
-}
-
-
 #pragma mark - View Lifecylce
 
 /**
@@ -250,7 +233,7 @@ SINGLETON(ApplicationManager)
 }
 
 
-#pragma mark - Application Singletone Patterns
+#pragma mark - Application Singleton Patterns
 
 
 + (SBApplicationModel*) model
@@ -294,7 +277,7 @@ SINGLETON(ApplicationManager)
     {
         self.activeController = [[SBDebugViewController alloc] initWithNibName:@"SBDebugViewController" bundle:nil];
     }
-    else if ([nameNIB isEqual:@"HealthStream"])
+    else if ([nameNIB isEqual:@"Healthstream"])
     {
         self.activeController = [[SBHealthStreamTableViewController alloc] initWithNibName:@"SBHealthStreamTableViewController" bundle:nil];
     }
@@ -413,6 +396,14 @@ SINGLETON(ApplicationManager)
 }
 
 /**
+ Return a random Integer.
+ */
++ (NSInteger)randomIntBetween:(NSInteger)min and:(NSInteger)max
+{
+    return (NSInteger)(arc4random() % (max-min))+min;
+}
+
+/**
  Colors.
  */
 + (UIColor *)colorWithHexString:(NSString *)str {
@@ -467,6 +458,14 @@ SINGLETON(ApplicationManager)
 }
 
 /**
+ String from date with formatter.
+ */
++ (NSString*)dateToString:(NSDate*)date formater:(NSDateFormatter*)formatter
+{
+    return [formatter stringFromDate:date];
+}
+
+/**
  */
 +(BOOL) NSStringIsValidEmail:(NSString *)checkString
 {
@@ -477,5 +476,20 @@ SINGLETON(ApplicationManager)
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:checkString];
 }
+
+/**
+ */
+- (void)showHUD:(BOOL)show
+{
+    if (show)
+    {
+        [MBProgressHUD showHUDAddedTo:self.frameworkView animated:YES];
+    }
+    else
+    {
+        [MBProgressHUD hideAllHUDsForView:self.frameworkView animated:YES];
+    }
+}
+
 
 @end

@@ -13,11 +13,11 @@
 @end
 
 @implementation MetaBarViewController
-SINGLETON(MetaBarViewController)
+Singleton(MetaBarViewController)
 
 /**
  */
-- (instancetype)initSingletone
+- (instancetype)initSingleton
 {
     return self;
 }
@@ -40,7 +40,7 @@ SINGLETON(MetaBarViewController)
 
 /**
  */
-- (IBAction)openMenuButton:(id)sender;
+- (IBAction)openMenuButton:(id)sender
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:NotifyOpenMetaMenu object:self];
 }

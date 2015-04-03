@@ -90,7 +90,7 @@
             self.indexNames = (self.indexNames == self.strings.count-1) ? 0 : ++self.indexNames;
             self.label.layer.opacity = 1;
             [self.label sizeToFit];
-            CGFloat y = (self.frame.size.height/2-(self.label.frame.size.height/2));
+            //CGFloat y = (self.frame.size.height/2-(self.label.frame.size.height/2));
             CGFloat x = (self.frame.size.width/2-(self.label.frame.size.width/2));
 //            self.label.frame = CGRectMake(0,y, self.label.frame.size.width, self.label.frame.size.height);
 

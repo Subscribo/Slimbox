@@ -8,6 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SBHealthStreamTableViewController : UITableViewController
+@protocol SBHealthstreamCellBottomViewControllerDelegate <NSObject>
+- (void)showDetail;
+- (void)shareFacebook;
+- (void)shareTwitter;
+- (void)shareEmail;
+@end
 
+@interface SBHealthStreamTableViewController : UITableViewController
+- (void)viewDidLoad;
+- (void)loadNextForSignal;
+- (void)didReceiveMemoryWarning;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)showDetail:(NSInteger)indexModel;
+- (void)shareFacebook:(NSInteger)indexModel;
+- (void)shareTwitter:(NSInteger)indexModel;
+- (void)shareEmail:(NSInteger)indexModel;
 @end

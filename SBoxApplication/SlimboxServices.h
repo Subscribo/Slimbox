@@ -7,13 +7,13 @@
 //
 
 #import "RACSignal.h"
-#import "Singletone.h"
+#import "Singleton.h"
 
 /**
  Services is responsible for all REST Methods. 
  */
 @interface SlimboxServices : NSObject
-SINGLETONE
+SingletonInit
 - (RACSignal*)facebookLoginUser;
 - (RACSignal*)facebookGetUserData;
 @end

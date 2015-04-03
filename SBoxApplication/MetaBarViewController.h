@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Singletone.h"
+#import "Singleton.h"
 @interface MetaBarViewController : UIViewController
-SINGLETONE
+SingletonInit
 - (float)getHeight;
 - (IBAction)openMenuButton:(id)sender;
 

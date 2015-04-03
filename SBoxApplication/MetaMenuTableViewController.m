@@ -28,7 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    static int colorIndex = 0;
+//    static int colorIndex = 0;
     
     // Load configuration from plist
     NSDictionary *dict = [NSMutableDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"configuration" ofType:@"plist"]];

@@ -34,7 +34,6 @@
 + (void)zoomIn:(CALayer*)theLayer removeAnimations:(BOOL)remove duration:(float)duration delegate:(NSObject*)delegate animationID:(NSString*)theAnimationID;
 + (void)zoomInAndRotate:(CALayer*)theLayer removeAnimations:(BOOL)remove duration:(float)duration delegate:(NSObject*)delegate animationID:(NSString*)theAnimationID;
 + (void)zoomOut:(CALayer*)theLayer removeAnimations:(BOOL)remove duration:(float)duration delegate:(NSObject*)delegate animationID:(NSString*)theAnimationID;
-+ (void)restoreLayer:(CALayer*)theLayer;
 + (void)initAnimationWithPath:(NSString*)thePath forLayer:(CALayer*)theLayer from:(float)valueFrom to:(float)valueTo duration:(int)valueDuration timing:(int)indexTimer delegate:(NSObject*)theDelegate animationID:(NSString*)theAnimationID;
     + (CAMediaTimingFunction*)getTimerForIndex:(int)index;
     + (void)initAccelerationYAnimationWithPath:(NSString*)thePath forLayer:(CALayer*)theLayer fromY:(double)valueFrom toY:(double)valueTo duration:(int)valueDuration timing:(int)indexTimer delegate:(NSObject*)theDelegate animationID:(NSString*)theAnimationID;

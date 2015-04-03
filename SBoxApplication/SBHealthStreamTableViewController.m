@@ -9,22 +9,53 @@
 #import "SBHealthStreamTableViewController.h"
 #import "ApplicationManager.h"
 #import "Animation.h"
+#import "PHealthstreamEventNutrition.h"
+#import "PHealthstreamEvent.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import "RACEXTScope.h"
+#import "SBHealthstreamCellBottomViewController.h"
+#import "PHealthstreamEventNutrition.h"
+#import "NutritionTableViewCell.h"
+#import "SBRecipeViewController.h"
+#import "KARecipeManager.h"
 
 @interface SBHealthStreamTableViewController ()
-
+@property (nonatomic, strong) NSMutableArray *hsEvents;
+@property (nonatomic, strong) SBRecipeViewController *recipeController;
 @end
 
 @implementation SBHealthStreamTableViewController
 
-- (void)viewDidLoad {
+/**
+ */
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [[ApplicationManager instance] unhideMetaMenuBar];
-    [ApplicationManager registerTableCell:@"SBHealthStreamEventView" tableView:self.tableView cellResudeIndentifier:@"Event"];
+    [ApplicationManager registerTableCell:@"NutritionTableViewCell" tableView:self.tableView cellResudeIndentifier:@"Nutrition"];
     self.view.backgroundColor = [UIColor clearColor];
     self.view.layer.opacity = 0;
-    [Animation fadeIn:self.view duration:3 completionBlock:^(POPAnimation *anim, bool finished){}];
+    [Animation fadeIn:self.view duration:3 completionBlock:^(POPAnimation *anim, BOOL finished){}];
+    //[[ApplicationManager model]setupMockupDataForUser]; // Create data for testing purposes
+    [self loadNextForSignal];
 }
 
+
+/**
+ Load N-Entries for the table.
+ */
+- (void)loadNextForSignal
+{
+    @weakify(self)
+    RACSubject *loadItems = [RACSubject subject];
+    [loadItems subscribeNext:^(id items)
+    {
+        @strongify(self)
+        self.hsEvents = (NSMutableArray*)items;
+        [self.tableView reloadData];
+    }];
+    [[ApplicationManager model] loadNext:loadItems option:kSBEventsLoadInitital];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -33,83 +64,120 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
+/**
+ Number of sections.
+ */
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 100;
+/**
+ Return heights for different cells.
+ */
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    int row = indexPath.row;
+    if (self.hsEvents && self.hsEvents.count > row)
+    {
+        if ([[self.hsEvents objectAtIndex:row] isKindOfClass:[PHealthstreamEventNutrition class]])
+        {
+            return [NutritionTableViewCell getHeight];
+        }
+    }
+    return 0;
 }
 
+/**
+ Lazy Loading Entries.
+ */
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    // load future events
+    if (scrollView.contentOffset.y < 0)
+    {
+        //
+    }
+    
+    // load past events
+    if (scrollView.contentOffset.y > scrollView.contentSize.height*0.8)
+    {
+        //
+    }
 
+}
+
+/**
+ Number of rows in sections.
+ */
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.hsEvents.count;
+}
+
+/**
+ Render Healthstream-Cells. 
+ */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Event" forIndexPath:indexPath];
+    NutritionTableViewCell *cell = (NutritionTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"Nutrition" forIndexPath:indexPath];
+    int row = indexPath.row;
+    
+    if (self.hsEvents && self.hsEvents.count > row)
+    {
+        PFObject *rowObject = (PFObject*)[self.hsEvents objectAtIndex:row];
+        
+        // Setup Nutrition Events
+        if ([rowObject isKindOfClass:[PHealthstreamEventNutrition class]])
+        {
+            PHealthstreamEventNutrition *nutrition = (PHealthstreamEventNutrition*)rowObject;
+            [cell initButtonController:cell];
+            [cell setTimestamp:nutrition.timestamp];
+            [cell setReceiptImageView:[UIImage imageWithData:[nutrition.image getData]]];
+            [cell setTitleText:nutrition.title];
+            [cell setCaloriesValue:nutrition.calories];
+            [cell setRating:nutrition.rating];
+            cell.indexDataModel = row;
+            cell.delegate = self;
+        }
+        
+        // Setup Consulter Message Entries
+        
+        
+        // Setup Healthcare-Assistant Entries
+    }
+    
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+/**
+ Show Receipt Details.
+ */
+- (void)showDetail:(NSInteger)indexModel
+{
+    self.recipeController = [[SBRecipeViewController alloc] initWithNibName:@"SBRecipeViewController" bundle:nil];
+
+    [self presentViewController:self.recipeController animated:YES completion:^{}];
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Table view delegate
-
-// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
+/**
+ */
+- (void)shareFacebook:(NSInteger)indexModel
+{
     
-    // Pass the selected object to the new view controller.
+}
+
+/**
+ */
+- (void)shareTwitter:(NSInteger)indexModel
+{
     
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
 }
-*/
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+/**
+ */
+- (void)shareEmail:(NSInteger)indexModel
+{
+    
 }
-*/
 
 @end

@@ -15,12 +15,12 @@
 #import <Bolts/Bolts.h>
 
 @implementation SlimboxServices
-SINGLETON(SlimboxServices)
+Singleton(SlimboxServices)
 
 /**
  Init-Service API here.
  */
-- initSingletone
+- initSingleton
 {
     if (self=[super init])
     {
@@ -119,11 +119,11 @@ Service Login in user with Facebook.
                                          if (userData[@"birthday"])
                                          {
                                              NSString *birthdate = userData[@"birthday"];
-                                             user.birthdate = birthdate;
+                                             user.birthdate = [ApplicationManager stringToDate:birthdate];
                                          }
                                          
                                          // #n: Check for security risks?
-                                         bool saved = [user saveInBackground];
+                                         [user saveInBackground];
                                      }
                                      [subscriber sendNext:@(true)];
                                  }];

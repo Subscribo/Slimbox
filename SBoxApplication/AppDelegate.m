@@ -8,9 +8,9 @@
 #import "AppDelegate.h"
 #import "ApplicationManager.h"
 #import <Parse/Parse.h>
-#import "RACEXTScope.h"
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import "RACEXTScope.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong) RACSubject *startSubject;
@@ -32,11 +32,11 @@
         NSNumber *number = (NSNumber*)next;
         if (![number boolValue])
         {
-            [[ApplicationManager instance] execute:@"Login"];
+            [[ApplicationManager instance] execute:@"Healthstream"];
         }
         else
         {
-            [[ApplicationManager instance] execute:@"Login"];            
+            [[ApplicationManager instance] execute:@"Healthstream"];            
         }
     }];
     
