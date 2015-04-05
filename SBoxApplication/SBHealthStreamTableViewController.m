@@ -155,7 +155,6 @@
 - (void)showDetail:(NSInteger)indexModel
 {
     self.recipeController = [[SBRecipeViewController alloc] initWithNibName:@"SBRecipeViewController" bundle:nil];
-
     [self presentViewController:self.recipeController animated:YES completion:^{}];
 }
 

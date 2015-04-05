@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface SBRecipeIngredientTableViewCell : UITableViewCell
+@property (nonatomic, strong) IBOutlet UIImageView *icon;
+@property (nonatomic, strong) IBOutlet UILabel *ingredient;
+@property (nonatomic, strong) IBOutlet UILabel *amount;
 
++ (CGFloat)getHeight;
 @end

@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "KARecipeManager.h"
 
-@interface SBRecipeViewController : UIViewController
+@interface SBRecipeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) IBOutlet UILabel *name;
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
+
 @end

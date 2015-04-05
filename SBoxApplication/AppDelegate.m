@@ -11,6 +11,7 @@
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "RACEXTScope.h"
+#import "SlimboxServices.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong) RACSubject *startSubject;
@@ -25,6 +26,9 @@
     
     // Setup parse and start application
     [Parse setApplicationId:@"Sl0QeeXPe0H5dVtfbAWXWxE0ho9TjdVXmaosKNAD" clientKey:@"WHJHnUEaADH6MncIQjM7ykYyuKlSXEM50UYUNEAR"];
+    
+    
+    
     
     // Send user signal
     self.startSubject = [RACSubject subject];

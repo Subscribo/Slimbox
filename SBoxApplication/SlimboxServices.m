@@ -11,8 +11,10 @@
 #import <RACEXTScope.h>
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import "ApplicationManager.h"
+#import "KARecipeManager.h"
 #import "Log.h"
 #import <Bolts/Bolts.h>
+#import <UIImageView+AFNetworking.h>
 
 @implementation SlimboxServices
 Singleton(SlimboxServices)
@@ -27,6 +29,8 @@ Singleton(SlimboxServices)
     }
     return self;
 }
+
+#pragma mark - Social Media Services
 
 /**
 Service Login in user with Facebook.
@@ -137,4 +141,43 @@ Service Login in user with Facebook.
                          }];
     return signal;
 }
+
+
+#pragma mark - RecipeServices 
+
+
++ (RACSignal*)queryReceiptWithID:(NSString*)ID 
+{
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [[KARecipeManager sharedRecipeManager] getRecipeWithID:ID andCompletitionBlock:^(KADataModelRecipe *recipe)
+         {
+             [subscriber sendNext:recipe];
+         }];
+        return nil;
+    }];    
+}
+
+/**
+ Load some image via REST.
+ */
++ (RACSignal*)loadImageNamed:(NSString*)imageURL forImageView:(UIImageView*)imageView placeholderImage:(UIImage*)image
+{
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        NSURL *URL = [NSURL URLWithString:imageURL];
+        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+        __weak UIImageView *temporary = imageView;
+        [imageView setImageWithURLRequest:request placeholderImage:image success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image)
+        {
+            [temporary setImage:image];
+            [subscriber sendNext:nil];
+        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+            // #t: Do Errorhandling
+        }];
+        return nil;
+    }];
+}
+
+
+
+
 @end

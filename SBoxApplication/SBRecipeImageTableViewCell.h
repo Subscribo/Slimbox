@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SBRecipeImageTableViewCell : UITableViewCell
+@property (nonatomic, strong) IBOutlet UIImageView *titleImage;
 
++ (CGFloat)getHeight;
 @end

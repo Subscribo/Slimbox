@@ -8,7 +8,7 @@
 
 #import "RACSignal.h"
 #import "Singleton.h"
-
+#import <UIKit/UIKit.h>
 /**
  Services is responsible for all REST Methods. 
  */
@@ -16,4 +16,7 @@
 SingletonInit
 - (RACSignal*)facebookLoginUser;
 - (RACSignal*)facebookGetUserData;
++ (void)test;
++ (RACSignal*)queryReceiptWithID:(NSString*)ID;
++ (RACSignal*)loadImageNamed:(NSString*)imageURL forImageView:(UIImageView*)imageView placeholderImage:(UIImage*)image;
 @end

@@ -1,14 +1,14 @@
 //
-//  SBRecipeImageTableViewCell.m
+//  SBRecipeNameTableViewCell.m
 //  SBoxApplication
 //
-//  Created by snowkrash on 03.04.15.
+//  Created by snowkrash on 04.04.15.
 //  Copyright (c) 2015 Zeissl e.U. All rights reserved.
 //
 
-#import "SBRecipeImageTableViewCell.h"
+#import "SBRecipeNameTableViewCell.h"
 
-@implementation SBRecipeImageTableViewCell
+@implementation SBRecipeNameTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
@@ -19,11 +19,5 @@
 
     // Configure the view for the selected state
 }
-
-+ (CGFloat)getHeight
-{
-    return 207;
-}
-
 
 @end
