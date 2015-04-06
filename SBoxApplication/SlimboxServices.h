@@ -10,13 +10,13 @@
 #import "Singleton.h"
 #import <UIKit/UIKit.h>
 /**
- Services is responsible for all REST Methods. 
+ Services is responsible for all REST Methods based on Signals. 
  */
 @interface SlimboxServices : NSObject
 SingletonInit
 - (RACSignal*)facebookLoginUser;
 - (RACSignal*)facebookGetUserData;
 + (void)test;
-+ (RACSignal*)queryReceiptWithID:(NSString*)ID;
++ (RACSignal*)queryRecipeWithID:(NSString*)ID;
 + (RACSignal*)loadImageNamed:(NSString*)imageURL forImageView:(UIImageView*)imageView placeholderImage:(UIImage*)image;
 @end

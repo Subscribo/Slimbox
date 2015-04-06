@@ -83,7 +83,7 @@ Singleton(ApplicationManager)
 
 - (void)setupNotifications
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openMetaMenu) name:NotifyOpenMetaMenu object:nil];
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openMetaMenu) name:NotifyOpenMetaMenu object:nil];
 }
 
 #pragma mark - MenuBar and MetaMenu
@@ -200,6 +200,20 @@ Singleton(ApplicationManager)
 - (void)applicationViewAddView:(UIView*)view
 {
     [self.applicationView addSubview:view];
+}
+
+/**
+ */
+- (void)applicationViewFullscreen
+{
+    self.applicationView.frame = CGRectMake(0, 0, [ApplicationManager getScreenWidth], [ApplicationManager getScreenHeight]);
+}
+
+/**
+ */
+- (void)applicationFrameWindowed
+{
+    self.applicationView.frame = CGRectMake(0, self.metaBarViewController.view.frame.size.height, [ApplicationManager getScreenWidth], [ApplicationManager getScreenHeight]-self.metaBarViewController.view.frame.size.height);
 }
 
 /**

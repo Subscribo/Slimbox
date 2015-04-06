@@ -18,6 +18,7 @@
 #import "NutritionTableViewCell.h"
 #import "SBRecipeViewController.h"
 #import "KARecipeManager.h"
+#import "MetaBarViewController.h"
 
 @interface SBHealthStreamTableViewController ()
 @property (nonatomic, strong) NSMutableArray *hsEvents;
@@ -31,13 +32,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // #t: do further animations
     [[ApplicationManager instance] unhideMetaMenuBar];
+    [[ApplicationManager instance] applicationFrameWindowed];
     [ApplicationManager registerTableCell:@"NutritionTableViewCell" tableView:self.tableView cellResudeIndentifier:@"Nutrition"];
     self.view.backgroundColor = [UIColor clearColor];
     self.view.layer.opacity = 0;
     [Animation fadeIn:self.view duration:3 completionBlock:^(POPAnimation *anim, BOOL finished){}];
     //[[ApplicationManager model]setupMockupDataForUser]; // Create data for testing purposes
     [self loadNextForSignal];
+    [[MetaBarViewController instance] setTitle:@"Healthstream"];
 }
 
 
@@ -155,7 +159,13 @@
 - (void)showDetail:(NSInteger)indexModel
 {
     self.recipeController = [[SBRecipeViewController alloc] initWithNibName:@"SBRecipeViewController" bundle:nil];
-    [self presentViewController:self.recipeController animated:YES completion:^{}];
+    //[self presentViewController:self.recipeController animated:YES completion:^{}];
+    self.recipeController.view.layer.anchorPoint = CGPointZero;
+
+    self.recipeController.view.frame = CGRectMake(0, 0, [ApplicationManager getScreenWidth], [ApplicationManager getScreenHeight]);
+    [[ApplicationManager instance] applicationViewAddView:self.recipeController.view];
+    self.recipeController.view.layer.position = CGPointMake(0, 0);
+    [Animation moveInViews:@[self.recipeController.view] option:nil delay:@(1) x:0 y:0];
 }
 
 /**

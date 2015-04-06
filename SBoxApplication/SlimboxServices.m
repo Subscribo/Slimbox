@@ -145,8 +145,10 @@ Service Login in user with Facebook.
 
 #pragma mark - RecipeServices 
 
-
-+ (RACSignal*)queryReceiptWithID:(NSString*)ID 
+/**
+ Query recipe by ID
+ */
++ (RACSignal*)queryRecipeWithID:(NSString*)ID 
 {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         [[KARecipeManager sharedRecipeManager] getRecipeWithID:ID andCompletitionBlock:^(KADataModelRecipe *recipe)
@@ -158,7 +160,7 @@ Service Login in user with Facebook.
 }
 
 /**
- Load some image via REST.
+ Load some image for imageview via REST.
  */
 + (RACSignal*)loadImageNamed:(NSString*)imageURL forImageView:(UIImageView*)imageView placeholderImage:(UIImage*)image
 {

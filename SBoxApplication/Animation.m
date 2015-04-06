@@ -105,7 +105,7 @@
 {
     for (UIView *v in views)
     {
-        [Animation moveX:v duration:2 from:v.frame.origin.x to:x completionBlock:^(POPAnimation *anim, BOOL finished){
+        [Animation moveX:v duration:[delay floatValue] from:[ApplicationManager getScreenWidth] to:x completionBlock:^(POPAnimation *anim, BOOL finished){
             //[v removeFromSuperview];
         }];
     }

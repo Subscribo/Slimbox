@@ -16,6 +16,8 @@
 #import "KADataModelRecipe.h"
 #import "KADataModelIngredient.h"
 #import "SlimboxServices.h"
+#import "MetaBarViewController.h"
+
 
 @interface SBRecipeViewController ()
 @property (nonatomic, strong) NSMutableArray *tableViewModelArray;
@@ -34,11 +36,11 @@
     self.recipeImageView = [self.tableView dequeueReusableCellWithIdentifier:@"CellImageView"];
     self.recipeImageView.titleImage.clipsToBounds = true;
     self.recipeImageView.titleImage.contentMode = UIViewContentModeScaleAspectFit;
-    
+        
     @weakify(self)
     
     // Load all data from REST
-    RACSignal *recipeSignal = [[SlimboxServices queryReceiptWithID:@"672"] flattenMap:^RACStream *(id value)
+    RACSignal *recipeSignal = [[SlimboxServices queryRecipeWithID:@"672"] flattenMap:^RACStream *(id value)
     {
         @strongify(self)
         self.recipe = value;
@@ -63,6 +65,15 @@
             cell.ingredient.text = ingredient.ingredientName;
             [self.tableViewModelArray addObject:cell];
         }
+        
+        UIButton *button = [[UIButton alloc] init];
+        @weakify(self)
+        [[MetaBarViewController instance]setTitle:@"Rezepte-Ansicht"];
+        [[[MetaBarViewController instance] setButtonForRightButtonRight:button] subscribeNext:^(id x) {
+            @strongify(self)
+            [self.view removeFromSuperview];
+        } ];
+
         [self.tableView reloadData];
     }];
     
@@ -124,7 +135,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     int row = indexPath.row;
-    if (self.tableViewModelArray.count > 0) {
+    if (self.tableViewModelArray.count > 0)
+    {
         return [self.tableViewModelArray objectAtIndex:row];
     }
     

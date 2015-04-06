@@ -61,5 +61,6 @@ SingletonInit
 + (NSInteger)randomIntBetween:(NSInteger)min and:(NSInteger)max;
 - (void)showHUD:(BOOL)show;
 + (NSString*)dateToString:(NSDate*)date formater:(NSDateFormatter*)formatter;
-
+- (void)applicationViewFullscreen;
+- (void)applicationFrameWindowed;
 @end
