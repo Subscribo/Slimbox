@@ -84,8 +84,6 @@
 		9F1141F61ACABA94007131B1 /* PHealthstreamEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1141F51ACABA94007131B1 /* PHealthstreamEvent.m */; };
 		9F1141F91ACABAE6007131B1 /* PHealthstreamEventAD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1141F81ACABAE6007131B1 /* PHealthstreamEventAD.m */; };
 		9F1141FC1ACABB2D007131B1 /* PRecipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1141FB1ACABB2D007131B1 /* PRecipe.m */; };
-		9F4394F91AD043C900533D21 /* SBRecipeNameTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4394F71AD043C900533D21 /* SBRecipeNameTableViewCell.m */; };
-		9F4394FA1AD043C900533D21 /* SBRecipeNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F4394F81AD043C900533D21 /* SBRecipeNameTableViewCell.xib */; };
 		9F48106F1ACE6A930025FD16 /* KARecipeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F48106E1ACE6A930025FD16 /* KARecipeManager.m */; };
 		9F4810721ACE6AC40025FD16 /* KADataModelRecipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4810711ACE6AC40025FD16 /* KADataModelRecipe.m */; };
 		9F4810791ACE6AF20025FD16 /* KADataModelCookingStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4810741ACE6AF20025FD16 /* KADataModelCookingStep.m */; };
@@ -93,10 +91,6 @@
 		9F48107B1ACE6AF20025FD16 /* KADataModelWine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4810781ACE6AF20025FD16 /* KADataModelWine.m */; };
 		9F48107E1ACE73290025FD16 /* KASettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F48107D1ACE73290025FD16 /* KASettingsManager.m */; };
 		9F4810811ACE735C0025FD16 /* KAURLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4810801ACE735C0025FD16 /* KAURLManager.m */; };
-		9F4810DE1ACE9BB10025FD16 /* SBRecipeImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4810DC1ACE9BB10025FD16 /* SBRecipeImageTableViewCell.m */; };
-		9F4810DF1ACE9BB10025FD16 /* SBRecipeImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F4810DD1ACE9BB10025FD16 /* SBRecipeImageTableViewCell.xib */; };
-		9F4810E31ACE9BF50025FD16 /* SBRecipeIngredientTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4810E11ACE9BF50025FD16 /* SBRecipeIngredientTableViewCell.m */; };
-		9F4810E41ACE9BF50025FD16 /* SBRecipeIngredientTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F4810E21ACE9BF50025FD16 /* SBRecipeIngredientTableViewCell.xib */; };
 		9F4870741ACB2BF600D9835D /* HealthstreamEventItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4870731ACB2BF600D9835D /* HealthstreamEventItem.m */; };
 		9F48707B1ACB37E000D9835D /* #healthstream#star.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F48707A1ACB37E000D9835D /* #healthstream#star.png */; };
 		9F4870841ACC35EC00D9835D /* NutritionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4870821ACC35EC00D9835D /* NutritionTableViewCell.m */; };
@@ -105,6 +99,12 @@
 		9F48708A1ACC59D400D9835D /* SBHealthstreamCellBottomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F4870881ACC59D400D9835D /* SBHealthstreamCellBottomViewController.xib */; };
 		9F5C73891ACDC40E00614C51 /* SBRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F5C73871ACDC40E00614C51 /* SBRecipeViewController.m */; };
 		9F5C738A1ACDC40E00614C51 /* SBRecipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C73881ACDC40E00614C51 /* SBRecipeViewController.xib */; };
+		B2E85C3B1AD426BE0079265E /* SBRecipeImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E85C3A1AD426BE0079265E /* SBRecipeImageTableViewCell.m */; };
+		B2E85C3D1AD426CB0079265E /* SBRecipeImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2E85C3C1AD426CB0079265E /* SBRecipeImageTableViewCell.xib */; };
+		B2E85C411AD426D90079265E /* SBRecipeIngredientTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E85C3F1AD426D90079265E /* SBRecipeIngredientTableViewCell.m */; };
+		B2E85C421AD426D90079265E /* SBRecipeIngredientTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2E85C401AD426D90079265E /* SBRecipeIngredientTableViewCell.xib */; };
+		B2E85C461AD426E80079265E /* SBRecipeNameTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E85C441AD426E80079265E /* SBRecipeNameTableViewCell.m */; };
+		B2E85C471AD426E80079265E /* SBRecipeNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2E85C451AD426E80079265E /* SBRecipeNameTableViewCell.xib */; };
 		D97C5964790D8FE9820399DF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5A272436B8336533FE749C /* libPods.a */; };
 		F75984D61A8D64950031FD91 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E3A7A21A8B0E29002039E3 /* CoreGraphics.framework */; };
 		F75984D71A8D649B0031FD91 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E3A7A01A8B0DE5002039E3 /* QuartzCore.framework */; };
@@ -254,9 +254,6 @@
 		9F1141F81ACABAE6007131B1 /* PHealthstreamEventAD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHealthstreamEventAD.m; sourceTree = "<group>"; };
 		9F1141FA1ACABB2D007131B1 /* PRecipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PRecipe.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		9F1141FB1ACABB2D007131B1 /* PRecipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PRecipe.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		9F4394F61AD043C900533D21 /* SBRecipeNameTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBRecipeNameTableViewCell.h; path = ../../../../../Customer/Slimbox/prj/SlimboxGitHub/SBoxApplication/SBRecipeNameTableViewCell.h; sourceTree = "<group>"; };
-		9F4394F71AD043C900533D21 /* SBRecipeNameTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBRecipeNameTableViewCell.m; path = ../../../../../Customer/Slimbox/prj/SlimboxGitHub/SBoxApplication/SBRecipeNameTableViewCell.m; sourceTree = "<group>"; };
-		9F4394F81AD043C900533D21 /* SBRecipeNameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SBRecipeNameTableViewCell.xib; path = ../../../../../Customer/Slimbox/prj/SlimboxGitHub/SBoxApplication/SBRecipeNameTableViewCell.xib; sourceTree = "<group>"; };
 		9F48106D1ACE6A930025FD16 /* KARecipeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KARecipeManager.h; sourceTree = "<group>"; };
 		9F48106E1ACE6A930025FD16 /* KARecipeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KARecipeManager.m; sourceTree = "<group>"; };
 		9F4810701ACE6AC40025FD16 /* KADataModelRecipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KADataModelRecipe.h; sourceTree = "<group>"; };
@@ -271,12 +268,6 @@
 		9F48107D1ACE73290025FD16 /* KASettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KASettingsManager.m; sourceTree = "<group>"; };
 		9F48107F1ACE735C0025FD16 /* KAURLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAURLManager.h; sourceTree = "<group>"; };
 		9F4810801ACE735C0025FD16 /* KAURLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAURLManager.m; sourceTree = "<group>"; };
-		9F4810DB1ACE9BB10025FD16 /* SBRecipeImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBRecipeImageTableViewCell.h; path = ../../../../Customer/Slimbox/prj/SlimboxGitHub/SBoxApplication/SBRecipeImageTableViewCell.h; sourceTree = SOURCE_ROOT; };
-		9F4810DC1ACE9BB10025FD16 /* SBRecipeImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBRecipeImageTableViewCell.m; path = ../../../../../Customer/Slimbox/prj/SlimboxGitHub/SBoxApplication/SBRecipeImageTableViewCell.m; sourceTree = "<group>"; };
-		9F4810DD1ACE9BB10025FD16 /* SBRecipeImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SBRecipeImageTableViewCell.xib; path = ../../../../../Customer/Slimbox/prj/SlimboxGitHub/SBoxApplication/SBRecipeImageTableViewCell.xib; sourceTree = "<group>"; };
-		9F4810E01ACE9BF50025FD16 /* SBRecipeIngredientTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBRecipeIngredientTableViewCell.h; path = ../../../../../Customer/Slimbox/prj/SlimboxGitHub/SBoxApplication/SBRecipeIngredientTableViewCell.h; sourceTree = "<group>"; };
-		9F4810E11ACE9BF50025FD16 /* SBRecipeIngredientTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBRecipeIngredientTableViewCell.m; path = ../../../../../Customer/Slimbox/prj/SlimboxGitHub/SBoxApplication/SBRecipeIngredientTableViewCell.m; sourceTree = "<group>"; };
-		9F4810E21ACE9BF50025FD16 /* SBRecipeIngredientTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SBRecipeIngredientTableViewCell.xib; path = ../../../../../Customer/Slimbox/prj/SlimboxGitHub/SBoxApplication/SBRecipeIngredientTableViewCell.xib; sourceTree = "<group>"; };
 		9F4870721ACB2BF600D9835D /* HealthstreamEventItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthstreamEventItem.h; sourceTree = "<group>"; };
 		9F4870731ACB2BF600D9835D /* HealthstreamEventItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthstreamEventItem.m; sourceTree = "<group>"; };
 		9F48707A1ACB37E000D9835D /* #healthstream#star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "#healthstream#star.png"; sourceTree = "<group>"; };
@@ -289,6 +280,15 @@
 		9F5C73861ACDC40E00614C51 /* SBRecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SBRecipeViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		9F5C73871ACDC40E00614C51 /* SBRecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SBRecipeViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9F5C73881ACDC40E00614C51 /* SBRecipeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBRecipeViewController.xib; sourceTree = "<group>"; };
+		B2E85C391AD426BE0079265E /* SBRecipeImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRecipeImageTableViewCell.h; sourceTree = "<group>"; };
+		B2E85C3A1AD426BE0079265E /* SBRecipeImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRecipeImageTableViewCell.m; sourceTree = "<group>"; };
+		B2E85C3C1AD426CB0079265E /* SBRecipeImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBRecipeImageTableViewCell.xib; sourceTree = "<group>"; };
+		B2E85C3E1AD426D90079265E /* SBRecipeIngredientTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRecipeIngredientTableViewCell.h; sourceTree = "<group>"; };
+		B2E85C3F1AD426D90079265E /* SBRecipeIngredientTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRecipeIngredientTableViewCell.m; sourceTree = "<group>"; };
+		B2E85C401AD426D90079265E /* SBRecipeIngredientTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBRecipeIngredientTableViewCell.xib; sourceTree = "<group>"; };
+		B2E85C431AD426E80079265E /* SBRecipeNameTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRecipeNameTableViewCell.h; sourceTree = "<group>"; };
+		B2E85C441AD426E80079265E /* SBRecipeNameTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRecipeNameTableViewCell.m; sourceTree = "<group>"; };
+		B2E85C451AD426E80079265E /* SBRecipeNameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBRecipeNameTableViewCell.xib; sourceTree = "<group>"; };
 		F7B950701A90653F006B9CD6 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		F7B950711A90653F006B9CD6 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
 		F7B950721A90653F006B9CD6 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
@@ -692,15 +692,15 @@
 		9F4810D81ACE9B1B0025FD16 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				9F4810DB1ACE9BB10025FD16 /* SBRecipeImageTableViewCell.h */,
-				9F4810DC1ACE9BB10025FD16 /* SBRecipeImageTableViewCell.m */,
-				9F4810DD1ACE9BB10025FD16 /* SBRecipeImageTableViewCell.xib */,
-				9F4810E01ACE9BF50025FD16 /* SBRecipeIngredientTableViewCell.h */,
-				9F4810E11ACE9BF50025FD16 /* SBRecipeIngredientTableViewCell.m */,
-				9F4810E21ACE9BF50025FD16 /* SBRecipeIngredientTableViewCell.xib */,
-				9F4394F61AD043C900533D21 /* SBRecipeNameTableViewCell.h */,
-				9F4394F71AD043C900533D21 /* SBRecipeNameTableViewCell.m */,
-				9F4394F81AD043C900533D21 /* SBRecipeNameTableViewCell.xib */,
+				B2E85C431AD426E80079265E /* SBRecipeNameTableViewCell.h */,
+				B2E85C441AD426E80079265E /* SBRecipeNameTableViewCell.m */,
+				B2E85C451AD426E80079265E /* SBRecipeNameTableViewCell.xib */,
+				B2E85C3C1AD426CB0079265E /* SBRecipeImageTableViewCell.xib */,
+				B2E85C391AD426BE0079265E /* SBRecipeImageTableViewCell.h */,
+				B2E85C3A1AD426BE0079265E /* SBRecipeImageTableViewCell.m */,
+				B2E85C3E1AD426D90079265E /* SBRecipeIngredientTableViewCell.h */,
+				B2E85C3F1AD426D90079265E /* SBRecipeIngredientTableViewCell.m */,
+				B2E85C401AD426D90079265E /* SBRecipeIngredientTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -907,20 +907,20 @@
 				95784AA11AAF96780018DA34 /* SBLoginNameView.xib in Resources */,
 				954915FE1A9CE5420033ED02 /* #log#pic#01.png in Resources */,
 				954915FD1A9CE5420033ED02 /* #log#pic#02.png in Resources */,
-				9F4810E41ACE9BF50025FD16 /* SBRecipeIngredientTableViewCell.xib in Resources */,
+				B2E85C3D1AD426CB0079265E /* SBRecipeImageTableViewCell.xib in Resources */,
 				9532595C1AB8954F00C3E022 /* configuration.plist in Resources */,
 				95784AA91AAF98C20018DA34 /* SBLoginSize.xib in Resources */,
 				951C67B11AA3ABFF00924763 /* #log#button#twitter.png in Resources */,
 				951C67B01AA3ABFF00924763 /* #log#button#register.png in Resources */,
-				9F4810DF1ACE9BB10025FD16 /* SBRecipeImageTableViewCell.xib in Resources */,
 				95784AA51AAF981D0018DA34 /* SBLoginGenderView.xib in Resources */,
-				9F4394FA1AD043C900533D21 /* SBRecipeNameTableViewCell.xib in Resources */,
 				950F19821A81576300B4EDC8 /* LaunchScreen.xib in Resources */,
+				B2E85C471AD426E80079265E /* SBRecipeNameTableViewCell.xib in Resources */,
 				954915FC1A9CE5420033ED02 /* #log#pic#03.png in Resources */,
 				95F65B8F1A93B719001A2FB5 /* MetaMenuIconHealth.png in Resources */,
 				952FBCAF1A921C3500644431 /* CookTestImage05.png in Resources */,
 				9F1141F01AC983C0007131B1 /* SBHealthstreamEventAssistent.xib in Resources */,
 				954915FB1A9CE5420033ED02 /* #log#pic#04.png in Resources */,
+				B2E85C421AD426D90079265E /* SBRecipeIngredientTableViewCell.xib in Resources */,
 				952FBCB31A921C3500644431 /* CookTestImage01.png in Resources */,
 				9549EBC51A92C3E500B9A442 /* SBHealthStreamTableViewController.xib in Resources */,
 				9F5C738A1ACDC40E00614C51 /* SBRecipeViewController.xib in Resources */,
@@ -1003,6 +1003,7 @@
 				9F1141E11AC982ED007131B1 /* SBHealthstreamEventTableViewCell.m in Sources */,
 				9F1141F91ACABAE6007131B1 /* PHealthstreamEventAD.m in Sources */,
 				954915EF1A9CBC930033ED02 /* SBLoginViewController.m in Sources */,
+				B2E85C3B1AD426BE0079265E /* SBRecipeImageTableViewCell.m in Sources */,
 				95FC07691A8E488700C17CFD /* ResourceManager.m in Sources */,
 				F7B9507C1A90653F006B9CD6 /* mztools.c in Sources */,
 				F7B9507E1A90653F006B9CD6 /* zip.c in Sources */,
@@ -1011,6 +1012,7 @@
 				9542E7481A9F6E3E00126F3A /* RASignal.m in Sources */,
 				9F4870841ACC35EC00D9835D /* NutritionTableViewCell.m in Sources */,
 				9F4810811ACE735C0025FD16 /* KAURLManager.m in Sources */,
+				B2E85C411AD426D90079265E /* SBRecipeIngredientTableViewCell.m in Sources */,
 				9F4870741ACB2BF600D9835D /* HealthstreamEventItem.m in Sources */,
 				9F48107A1ACE6AF20025FD16 /* KADataModelIngredient.m in Sources */,
 				950F19A31A82315000B4EDC8 /* SBApplicationModel.m in Sources */,
@@ -1024,9 +1026,9 @@
 				95784A9E1AAF24AB0018DA34 /* SlimboxServices.m in Sources */,
 				95784A981AAE09D60018DA34 /* PUser.m in Sources */,
 				9542E74E1A9F71FE00126F3A /* RAFade.m in Sources */,
-				9F4810DE1ACE9BB10025FD16 /* SBRecipeImageTableViewCell.m in Sources */,
 				9F4810721ACE6AC40025FD16 /* KADataModelRecipe.m in Sources */,
 				950F19741A81576300B4EDC8 /* AppDelegate.m in Sources */,
+				B2E85C461AD426E80079265E /* SBRecipeNameTableViewCell.m in Sources */,
 				F7B9507B1A90653F006B9CD6 /* ioapi.c in Sources */,
 				9F1141FC1ACABB2D007131B1 /* PRecipe.m in Sources */,
 				F7B9507D1A90653F006B9CD6 /* unzip.c in Sources */,
@@ -1036,11 +1038,9 @@
 				9F1141EF1AC983C0007131B1 /* SBHealthstreamEventAssistent.m in Sources */,
 				9F1141F61ACABA94007131B1 /* PHealthstreamEvent.m in Sources */,
 				954916011A9D02550033ED02 /* SequencedAnimation.m in Sources */,
-				9F4810E31ACE9BF50025FD16 /* SBRecipeIngredientTableViewCell.m in Sources */,
 				95E3A7991A8B0D4B002039E3 /* Animation.m in Sources */,
 				9549EBC41A92C3E500B9A442 /* SBHealthStreamTableViewController.m in Sources */,
 				9542E74B1A9F6E5B00126F3A /* RALoadImage.m in Sources */,
-				9F4394F91AD043C900533D21 /* SBRecipeNameTableViewCell.m in Sources */,
 				F7B9507F1A90653F006B9CD6 /* ZipArchive.mm in Sources */,
 				950F19711A81576300B4EDC8 /* main.m in Sources */,
 				9F48107E1ACE73290025FD16 /* KASettingsManager.m in Sources */,
