@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MetaBarViewController.h"
 
 @protocol SBHealthstreamCellBottomViewControllerDelegate <NSObject>
 - (void)showDetail;
@@ -15,7 +16,7 @@
 - (void)shareEmail;
 @end
 
-@interface SBHealthStreamTableViewController : UITableViewController
+@interface SBHealthStreamTableViewController : UITableViewController <MetaBarDelegateController>
 - (void)viewDidLoad;
 - (void)loadNextForSignal;
 - (void)didReceiveMemoryWarning;

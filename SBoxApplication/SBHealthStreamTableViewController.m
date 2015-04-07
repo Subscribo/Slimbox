@@ -27,6 +27,18 @@
 
 @implementation SBHealthStreamTableViewController
 
+- (void)initMetaBar
+{
+    [[MetaBarViewController instance] setTitle:@"Healthstream"];
+    [[MetaBarViewController instance]showRightButtonLeft:false showRightButtonRight:true];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    [[[MetaBarViewController instance] setButtonForRightButtonRight:button] subscribeNext:^(id x) {
+        NSLog(@"Pressed Add Event");
+    }];
+    
+}
+
 /**
  */
 - (void)viewDidLoad
@@ -41,9 +53,13 @@
     [Animation fadeIn:self.view duration:3 completionBlock:^(POPAnimation *anim, BOOL finished){}];
     //[[ApplicationManager model]setupMockupDataForUser]; // Create data for testing purposes
     [self loadNextForSignal];
-    [[MetaBarViewController instance] setTitle:@"Healthstream"];
 }
 
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
 
 /**
  Load N-Entries for the table.
@@ -162,10 +178,8 @@
     //[self presentViewController:self.recipeController animated:YES completion:^{}];
     self.recipeController.view.layer.anchorPoint = CGPointZero;
 
-    self.recipeController.view.frame = CGRectMake(0, 0, [ApplicationManager getScreenWidth], [ApplicationManager getScreenHeight]);
-    [[ApplicationManager instance] applicationViewAddView:self.recipeController.view];
-    self.recipeController.view.layer.position = CGPointMake(0, 0);
-    [Animation moveInViews:@[self.recipeController.view] option:nil delay:@(1) x:0 y:0];
+    self.recipeController.view.frame = [[ApplicationManager instance] getApplicationViewBounds];
+    [[MetaBarViewController instance] pushViewController:self.recipeController];    
 }
 
 /**

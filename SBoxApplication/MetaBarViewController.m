@@ -8,8 +8,10 @@
 
 #import "MetaBarViewController.h"
 #import "SBNotifications.h"
-@interface MetaBarViewController ()
+#import "ApplicationManager.h"
 
+@interface MetaBarViewController ()
+@property (nonatomic, strong) NSMutableArray *delegateController;
 @end
 
 @implementation MetaBarViewController
@@ -20,6 +22,17 @@ Singleton(MetaBarViewController)
 - (instancetype)initSingleton
 {
     return self;
+}
+
+/**
+ */
+- (NSMutableArray*)delegateController
+{
+    if (!_delegateController)
+    {
+        _delegateController = [NSMutableArray new];
+    }
+    return _delegateController;
 }
 
 /**
@@ -58,15 +71,16 @@ Singleton(MetaBarViewController)
     return 50.0f;
 }
 
+/**
+ */
 - (RACSignal*)setButtonForRightButtonRight:(UIButton *)rightButtonRight
 {
-    if (!rightButtonRight)
+    if (self.rightButtonRight)
     {
         for (UIView *subview in self.rightButtonRight.subviews)
         {
             [subview removeFromSuperview];
         }
-        return nil;
     }
 
     rightButtonRight.frame = CGRectMake(0, 0, self.rightButtonRight.frame.size.width, self.rightButtonRight.frame.size.height);
@@ -75,22 +89,24 @@ Singleton(MetaBarViewController)
     return [rightButtonRight rac_signalForControlEvents:UIControlEventTouchUpInside];
 }
 
+/**
+ */
 - (RACSignal*)setButtonForRightButtonLeft:(UIButton *)rightButtonLeft
 {
-    if (!rightButtonLeft)
+    if (self.rightButtonLeft)
     {
         for (UIView *subview in self.rightButtonLeft.subviews)
         {
             [subview removeFromSuperview];
         }
-        return nil;
     }
     rightButtonLeft.frame = self.rightButtonLeft.frame;
     [self.rightButtonLeft addSubview:rightButtonLeft];
     return [rightButtonLeft rac_signalForControlEvents:UIControlEventTouchDown];
 }
 
-
+/**
+ */
 - (RACSignal*)setLeftButtonLeft:(UIButton *)leftButton;
 
 {
@@ -120,6 +136,42 @@ Singleton(MetaBarViewController)
         self.titleLabel.text = titleText;
     }
 }
+
+/**
+ */
+- (void)showRightButtonLeft:(BOOL)left showRightButtonRight:(BOOL)right
+{
+    self.rightButtonLeft.hidden = !left;
+    self.rightButtonRight.hidden = !right;
+}
+
+/**
+ */
+- (void)pushViewController:(id<MetaBarDelegateController>)controller
+{
+    [self.delegateController addObject:controller];
+    [controller initMetaBar];
+    UIViewController *viewController = (UIViewController*)controller;
+    [[ApplicationManager instance] applicationViewAddView:viewController.view];
+}
+
+/**
+ */
+- (void)popViewController
+{
+    UIViewController *controller = [self.delegateController lastObject];
+    [controller.view removeFromSuperview];
+    [self.delegateController removeLastObject];
+    if (self.delegateController.count > 0)
+    {
+        id<MetaBarDelegateController> controller = [self.delegateController lastObject];
+        [controller initMetaBar];
+    }
+}
+
+// #t: fx implement
+// - (void)setPushAnimation:(MetaBarControllerAnimation)type;
+// - (void)setPopAnimation:(MetaBarControllerAnimation)type;
 
 
 @end

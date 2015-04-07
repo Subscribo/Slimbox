@@ -10,6 +10,19 @@
 #import "Singleton.h"
 #import <ReactiveCocoa.h>
 
+typedef enum
+{
+    MetabarControllerAnimationMoveIn,
+    MetaBarControllerAnimationMoveOut,
+    MetaBarControllerAnimationFadeIn,
+    MetaBarControllerAnimationFadeOut
+} MetaBarControllerAnimation;
+
+@protocol MetaBarDelegateController <NSObject>
+@required
+- (void)initMetaBar;
+@end
+
 @interface MetaBarViewController : UIViewController
 @property (nonatomic, strong) IBOutlet UIView *rightButtonRight; // Icon-Button for Action
 @property (nonatomic, strong) IBOutlet UIView *rightButtonLeft; // Icon-Button for Action
@@ -23,5 +36,9 @@ SingletonInit
 - (RACSignal*)setButtonForRightButtonLeft:(UIButton *)rightButtonLeft;
 - (RACSignal*)setLeftButtonLeft:(UIButton *)leftButton;
 - (void)setTitle:(NSString *)titleText;
-
+- (void)showRightButtonLeft:(BOOL)left showRightButtonRight:(BOOL)right;
+- (void)pushViewController:(id<MetaBarDelegateController>)controller;
+- (void)popViewController;
+- (void)setPushAnimation:(MetaBarControllerAnimation)type;
+- (void)setPopAnimation:(MetaBarControllerAnimation)type;
 @end

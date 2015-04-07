@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "KARecipeManager.h"
+#import "MetaBarViewController.h"
 
-@interface SBRecipeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface SBRecipeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MetaBarDelegateController>
 @property (nonatomic, strong) IBOutlet UILabel *name;
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;

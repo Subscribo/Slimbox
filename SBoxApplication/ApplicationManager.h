@@ -45,6 +45,7 @@ SingletonInit
 + (CGRect)getScreenFrame;
 + (int)getScreenHeight;
 + (int)getScreenWidth;
+- (CGRect)getApplicationViewFrame;
 + (NSString *)getApplicationVersion;
 + (NSString *)getApplicationName;
 + (UINib*)getNib:(NSString*)name;
@@ -63,4 +64,5 @@ SingletonInit
 + (NSString*)dateToString:(NSDate*)date formater:(NSDateFormatter*)formatter;
 - (void)applicationViewFullscreen;
 - (void)applicationFrameWindowed;
+- (CGRect)getApplicationViewBounds;
 @end

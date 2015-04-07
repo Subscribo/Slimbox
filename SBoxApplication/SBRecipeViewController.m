@@ -19,13 +19,25 @@
 #import "MetaBarViewController.h"
 
 
-@interface SBRecipeViewController ()
+@interface SBRecipeViewController () 
 @property (nonatomic, strong) NSMutableArray *tableViewModelArray;
 @property (nonatomic, strong) KADataModelRecipe *recipe;
 @property (nonatomic, strong) SBRecipeImageTableViewCell *recipeImageView;
 @end
 
 @implementation SBRecipeViewController 
+
+- (void)initMetaBar
+{
+    // metabar setup
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    [[MetaBarViewController instance]setTitle:@"Rezepte-Ansicht"];
+    [[MetaBarViewController instance]showRightButtonLeft:false showRightButtonRight:true];
+    [[[MetaBarViewController instance] setButtonForRightButtonRight:button] subscribeNext:^(id x) {
+        NSLog(@"Pressed Close RecipeView");
+        [[MetaBarViewController instance]popViewController];
+    } ];
+}
 
 - (void)viewDidLoad
 {
@@ -39,7 +51,7 @@
         
     @weakify(self)
     
-    // Load all data from REST
+    // load all data from REST
     RACSignal *recipeSignal = [[SlimboxServices queryRecipeWithID:@"672"] flattenMap:^RACStream *(id value)
     {
         @strongify(self)
@@ -65,15 +77,6 @@
             cell.ingredient.text = ingredient.ingredientName;
             [self.tableViewModelArray addObject:cell];
         }
-        
-        UIButton *button = [[UIButton alloc] init];
-        @weakify(self)
-        [[MetaBarViewController instance]setTitle:@"Rezepte-Ansicht"];
-        [[[MetaBarViewController instance] setButtonForRightButtonRight:button] subscribeNext:^(id x) {
-            @strongify(self)
-            [self.view removeFromSuperview];
-        } ];
-
         [self.tableView reloadData];
     }];
     

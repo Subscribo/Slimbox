@@ -19,6 +19,7 @@
 #import "SBLoginViewController.h"
 #import "Animation.h"
 #import <MBProgressHUD.h>
+#import "MetaBarViewController.h"
 
 /**
  */
@@ -202,6 +203,16 @@ Singleton(ApplicationManager)
     [self.applicationView addSubview:view];
 }
 
+- (CGRect)getApplicationViewFrame
+{
+    return self.applicationView.frame;
+}
+
+- (CGRect)getApplicationViewBounds
+{
+    return self.applicationView.bounds;
+}
+
 /**
  */
 - (void)applicationViewFullscreen
@@ -283,6 +294,23 @@ Singleton(ApplicationManager)
 }
 
 /**
+ Stores the current UIViewController for later use.
+ */
+- (void)pushCurrentViewController
+{
+    
+}
+
+/**
+ Retrieves the last UIViewController and shows it
+ */
+- (void)popLastViewController
+{
+    
+}
+
+
+/**
  Returns Controller for Application Module.
  */
 -  (void)setControllerWithName:(NSString*)nameNIB
@@ -312,7 +340,13 @@ Singleton(ApplicationManager)
 {
     [[ApplicationManager instance] applicationViewRemoveAllViews];
     self.activeController.view.frame = [ApplicationManager getApplicationBounds];
-    [self applicationViewAddView:self.activeController.view];
+    if ([[self.activeController class] instanceMethodForSelector:@selector(initMetaBar)]) {
+        [[MetaBarViewController instance] pushViewController:(id<MetaBarDelegateController>)self.activeController];
+    }
+    else
+    {
+        [self applicationViewAddView:self.activeController.view];
+    }
 }
 
 #pragma mark - Application Properties (Class Methods)
