@@ -25,22 +25,23 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     // Setup parse and start application
-    [Parse setApplicationId:@"Sl0QeeXPe0H5dVtfbAWXWxE0ho9TjdVXmaosKNAD" clientKey:@"WHJHnUEaADH6MncIQjM7ykYyuKlSXEM50UYUNEAR"];
-    
-    
-    
+    [[ApplicationManager model] initModelWithApplicationID:@"Sl0QeeXPe0H5dVtfbAWXWxE0ho9TjdVXmaosKNAD" clientID:@"WHJHnUEaADH6MncIQjM7ykYyuKlSXEM50UYUNEAR"];
     
     // Send user signal
+    RACSignal *login = [SlimboxServices l]
+    
+    
+    
     self.startSubject = [RACSubject subject];
     [self.startSubject subscribeNext:^(id next){
         NSNumber *number = (NSNumber*)next;
         if (![number boolValue])
         {
-            [[ApplicationManager instance] execute:@"Healthstream"];
+            [[ApplicationManager instance] execute:@"Login"];
         }
         else
         {
-            [[ApplicationManager instance] execute:@"Healthstream"];            
+            [[ApplicationManager instance] execute:@"Healthstream"];
         }
     }];
     

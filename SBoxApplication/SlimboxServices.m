@@ -16,6 +16,24 @@
 #import <Bolts/Bolts.h>
 #import <UIImageView+AFNetworking.h>
 
+
+@protocol WeaklyReferencedFBUtils <NSObject>
+
+// FBSDKv3
++ (void)logInWithPermissions:(NSArray *)permissions block:(PFUserResultBlock)block;
+// FBSDKv4
++ (void)logInInBackgroundWithReadPermissions:(NSArray *)permissions block:(PFUserResultBlock)block;
++ (void)logInInBackgroundWithPublishPermissions:(NSArray *)permissions block:(PFUserResultBlock)block;
+
+@end
+
+
+@interface SlimboxServices ()
+
+
+@end
+
+
 @implementation SlimboxServices
 Singleton(SlimboxServices)
 
@@ -31,6 +49,67 @@ Singleton(SlimboxServices)
 }
 
 #pragma mark - Social Media Services
+
+/**
+ New Facebook-Login
+ */
+- (RACSignal*)loginWithFacebook
+{
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+ 
+        PFUserResultBlock resultBlock = ^(PFUser *user, NSError *error) {
+            if (user)
+            {
+                [subscriber sendNext:user];
+            } else if (error)
+            {
+                [subscriber sendError:error];
+            } else
+            {
+                // User cancelled login.
+            }
+        };
+    
+        NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location", @"email"];
+
+        Class fbUtils = NSClassFromString(@"PFFacebookUtils");
+        if ([fbUtils respondsToSelector:@selector(logInWithPermissions:block:)])
+        {
+            // Facebook SDK v3 Login
+            [fbUtils logInWithPermissions:permissionsArray block:resultBlock];
+        }
+        else if ([fbUtils respondsToSelector:@selector(logInInBackgroundWithReadPermissions:block:)])
+        {
+            // Facebook SDK v4 Login
+            if ([self permissionsContainsFacebookPublishPermission:permissionsArray]) {
+                [fbUtils logInInBackgroundWithPublishPermissions:permissionsArray block:resultBlock];
+            }
+            else
+            {
+                [fbUtils logInInBackgroundWithReadPermissions:permissionsArray block:resultBlock];
+            }
+        } else
+        {
+            [NSException raise:NSInternalInconsistencyException
+                        format:@"Can't find PFFacebookUtils. Please link with ParseFacebookUtils or ParseFacebookUtilsV4 to enable login with Facebook."];
+        }
+        return nil;
+    }];
+}
+
+- (BOOL)permissionsContainsFacebookPublishPermission:(NSArray *)permissions {
+    for (NSString *permission in permissions) {
+        if ([permission hasPrefix:@"publish"] ||
+            [permission hasPrefix:@"manage"] ||
+            [permission isEqualToString:@"ads_management"] ||
+            [permission isEqualToString:@"create_event"] ||
+            [permission isEqualToString:@"rsvp_event"]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 
 /**
 Service Login in user with Facebook.
@@ -94,7 +173,6 @@ Service Login in user with Facebook.
                                  [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
                                      if (!error) {
                                          // Parse the data received
-                                         [PUser registerSubclass];
                                          PUser *user = [PUser object];
                                          NSDictionary *userData = (NSDictionary *)result;
                                          NSString *facebookID = userData[@"id"];
@@ -127,7 +205,8 @@ Service Login in user with Facebook.
                                          }
                                          
                                          // #n: Check for security risks?
-                                         [user saveInBackground];
+                                         BOOL done = [user saveInBackground];
+                                         done = false;
                                      }
                                      [subscriber sendNext:@(true)];
                                  }];
@@ -141,7 +220,6 @@ Service Login in user with Facebook.
                          }];
     return signal;
 }
-
 
 #pragma mark - RecipeServices 
 

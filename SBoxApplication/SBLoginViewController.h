@@ -10,6 +10,7 @@
 #import "SlideShow.h"
 #import "ScrollerMovingText.h"
 #import "SBApplicationModel.h"
+#import "MetaBarViewController.h"
 
 
 /**
@@ -17,7 +18,7 @@
  #Note: Its could be separated later into single viewcontroller, for prototyping reason its all put together into one controller to save time.
  */
 
-@interface SBLoginViewController : UIViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+@interface SBLoginViewController : UIViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, MetaBarDelegateController>
 @property (nonatomic, strong)IBOutlet SlideShow *slideShow;
 @property (nonatomic, strong)IBOutlet ScrollerMovingText *movingText;
 @property (nonatomic, strong)IBOutlet ScrollerMovingText *movingText1;

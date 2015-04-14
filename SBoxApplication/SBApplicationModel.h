@@ -29,6 +29,7 @@ SingletonInit
 @property (nonatomic, strong) PUser *currentUser; // Current User Object
 @property (nonatomic, strong) NSMutableArray *hsItemsCache; // Cache which containss all loaded items
 
+- (void)initModelWithApplicationID:(NSString*)applicationID clientID:(NSString*)clientID;
 - (void)userLoggedIn:(RACSubject*)subject;
 - (BOOL)getUserObject;
 - (void)createObjectRegisterWith:(kSBRegister)type;

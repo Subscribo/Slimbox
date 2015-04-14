@@ -19,6 +19,7 @@
 #import "SBRecipeViewController.h"
 #import "KARecipeManager.h"
 #import "MetaBarViewController.h"
+#import "SBRecipePhotoViewController.h"
 
 @interface SBHealthStreamTableViewController ()
 @property (nonatomic, strong) NSMutableArray *hsEvents;
@@ -33,8 +34,10 @@
     [[MetaBarViewController instance]showRightButtonLeft:false showRightButtonRight:true];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeContactAdd];
-    [[[MetaBarViewController instance] setButtonForRightButtonRight:button] subscribeNext:^(id x) {
-        NSLog(@"Pressed Add Event");
+    [[[MetaBarViewController instance] setButtonForRightButtonRight:button] subscribeNext:^(id x)
+    {
+        SBRecipePhotoViewController *photoViewController = [[SBRecipePhotoViewController alloc] initWithNibName:@"SBRecipePhotoViewController" bundle:nil];
+        [[MetaBarViewController instance] pushViewController:photoViewController];
     }];
     
 }

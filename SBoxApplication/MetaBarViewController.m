@@ -44,7 +44,6 @@ Singleton(MetaBarViewController)
 /*#t:
  - (void)show:(BOOL)show;
  - (void)addIcon:(UIView*)icon target:(Selector)target option:(kMetabarOption)option animated:(BOOL)animated;
- 
  */
 
 - (void)didReceiveMemoryWarning {

@@ -25,23 +25,31 @@ Singleton(SBApplicationModel)
     if (self = [super init])
     {
         // Register Parse-Classes
-        [self setACL];
-        [PUser registerSubclass];
-        [PHealthstreamEvent registerSubclass];
-        [PHealthstreamEventNutrition registerSubclass];
     }
     return self;
 }
 
-#pragma mark - Create Mockup-Data 
+/**
+ */
+- (void)initModelWithApplicationID:(NSString*)applicationID clientID:(NSString*)clientID
+{
+    // do all here.
+    [Parse setApplicationId:applicationID clientKey:clientID];
+    [self setACL];
+    [PUser registerSubclass];
+    [PHealthstreamEvent registerSubclass];
+    [PHealthstreamEventNutrition registerSubclass];
+
+}
+
+#pragma mark - Create Mockup-Data
 
 /**
  Setup foo mockup-data.
  */
 - (void)setupMockupDataForUser
 {
-    [self deleteMockupData];
-    [self createMockupHealthStreamDataFromNowForNumberOfDays:365];
+    [self createMockupHealthStreamDataFromNowForNumberOfDays:10];
 }
 
 #pragma mark - Healthstream Data Model
@@ -69,7 +77,6 @@ Singleton(SBApplicationModel)
 }
 
 #pragma mark - Healthstream Data Query
-
 
 /**
  Load Healthstream-Events from Parse.
@@ -114,12 +121,10 @@ Singleton(SBApplicationModel)
 {
     [PFUser enableAutomaticUser];
     PFACL *defaultACL = [PFACL ACL];
-    [defaultACL setPublicReadAccess:NO];
-    [defaultACL setPublicWriteAccess:NO];
+    [defaultACL setPublicReadAccess:YES];
+    [defaultACL setPublicWriteAccess:YES];
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
 }
-
-
 
 #pragma mark - Mockup Data
 
@@ -178,7 +183,7 @@ Singleton(SBApplicationModel)
             hsEvent.eventID = hsNutrition.objectId;
             hsEvent.timestamp = mockupDate;
             hsEvent.type = @"Nutrition";
-            [hsEvent save];
+            BOOL isSaved = [hsEvent save];
             
             // Add date
             mockupDate= [now dateByAddingTimeInterval:day*i];

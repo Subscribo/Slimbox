@@ -99,6 +99,15 @@
 		9F48708A1ACC59D400D9835D /* SBHealthstreamCellBottomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F4870881ACC59D400D9835D /* SBHealthstreamCellBottomViewController.xib */; };
 		9F5C73891ACDC40E00614C51 /* SBRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F5C73871ACDC40E00614C51 /* SBRecipeViewController.m */; };
 		9F5C738A1ACDC40E00614C51 /* SBRecipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C73881ACDC40E00614C51 /* SBRecipeViewController.xib */; };
+		9F7C22811ADBF7040089DF56 /* SBRecipePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C227F1ADBF7040089DF56 /* SBRecipePhotoViewController.m */; };
+		9F7C22821ADBF7040089DF56 /* SBRecipePhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F7C22801ADBF7040089DF56 /* SBRecipePhotoViewController.xib */; };
+		9F7C22871ADC07190089DF56 /* UIImage+FixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C22841ADC07190089DF56 /* UIImage+FixOrientation.m */; };
+		9F7C22881ADC07190089DF56 /* SBCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C22861ADC07190089DF56 /* SBCameraController.m */; };
+		9F7C228D1ADC104E0089DF56 /* SBPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C228A1ADC104E0089DF56 /* SBPhotoViewController.m */; };
+		9F7C22951ADCF69B0089DF56 /* ViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C22901ADCF69B0089DF56 /* ViewUtils.m */; };
+		9F7C22961ADCF69B0089DF56 /* UIImage+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C22921ADCF69B0089DF56 /* UIImage+Crop.m */; };
+		9F7C22971ADCF69B0089DF56 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C22941ADCF69B0089DF56 /* UIImage+Resize.m */; };
+		9F7C22991ADCFB770089DF56 /* SBPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F7C22981ADCFB770089DF56 /* SBPhotoViewController.xib */; };
 		B2E85C3B1AD426BE0079265E /* SBRecipeImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E85C3A1AD426BE0079265E /* SBRecipeImageTableViewCell.m */; };
 		B2E85C3D1AD426CB0079265E /* SBRecipeImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2E85C3C1AD426CB0079265E /* SBRecipeImageTableViewCell.xib */; };
 		B2E85C411AD426D90079265E /* SBRecipeIngredientTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E85C3F1AD426D90079265E /* SBRecipeIngredientTableViewCell.m */; };
@@ -280,6 +289,22 @@
 		9F5C73861ACDC40E00614C51 /* SBRecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SBRecipeViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		9F5C73871ACDC40E00614C51 /* SBRecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SBRecipeViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9F5C73881ACDC40E00614C51 /* SBRecipeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBRecipeViewController.xib; sourceTree = "<group>"; };
+		9F7C227E1ADBF7040089DF56 /* SBRecipePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRecipePhotoViewController.h; sourceTree = "<group>"; };
+		9F7C227F1ADBF7040089DF56 /* SBRecipePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRecipePhotoViewController.m; sourceTree = "<group>"; };
+		9F7C22801ADBF7040089DF56 /* SBRecipePhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBRecipePhotoViewController.xib; sourceTree = "<group>"; };
+		9F7C22831ADC07190089DF56 /* UIImage+FixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FixOrientation.h"; sourceTree = "<group>"; };
+		9F7C22841ADC07190089DF56 /* UIImage+FixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixOrientation.m"; sourceTree = "<group>"; };
+		9F7C22851ADC07190089DF56 /* SBCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBCameraController.h; sourceTree = "<group>"; };
+		9F7C22861ADC07190089DF56 /* SBCameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBCameraController.m; sourceTree = "<group>"; };
+		9F7C22891ADC104E0089DF56 /* SBPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPhotoViewController.h; sourceTree = "<group>"; };
+		9F7C228A1ADC104E0089DF56 /* SBPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPhotoViewController.m; sourceTree = "<group>"; };
+		9F7C228F1ADCF69A0089DF56 /* ViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewUtils.h; sourceTree = "<group>"; };
+		9F7C22901ADCF69B0089DF56 /* ViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewUtils.m; sourceTree = "<group>"; };
+		9F7C22911ADCF69B0089DF56 /* UIImage+Crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Crop.h"; sourceTree = "<group>"; };
+		9F7C22921ADCF69B0089DF56 /* UIImage+Crop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Crop.m"; sourceTree = "<group>"; };
+		9F7C22931ADCF69B0089DF56 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		9F7C22941ADCF69B0089DF56 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		9F7C22981ADCFB770089DF56 /* SBPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBPhotoViewController.xib; sourceTree = "<group>"; };
 		B2E85C391AD426BE0079265E /* SBRecipeImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRecipeImageTableViewCell.h; sourceTree = "<group>"; };
 		B2E85C3A1AD426BE0079265E /* SBRecipeImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRecipeImageTableViewCell.m; sourceTree = "<group>"; };
 		B2E85C3C1AD426CB0079265E /* SBRecipeImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBRecipeImageTableViewCell.xib; sourceTree = "<group>"; };
@@ -454,6 +479,7 @@
 		952FBCA21A9218DE00644431 /* HealthStream */ = {
 			isa = PBXGroup;
 			children = (
+				9F7C227D1ADBF6C60089DF56 /* RecipePhoto */,
 				9F4870761ACB314300D9835D /* Controller */,
 				9F4870751ACB312C00D9835D /* HealthstreamCells */,
 				952FBCA31A9219C000644431 /* HealthstreamEvents */,
@@ -793,6 +819,29 @@
 			name = Recipe;
 			sourceTree = "<group>";
 		};
+		9F7C227D1ADBF6C60089DF56 /* RecipePhoto */ = {
+			isa = PBXGroup;
+			children = (
+				9F7C228F1ADCF69A0089DF56 /* ViewUtils.h */,
+				9F7C22901ADCF69B0089DF56 /* ViewUtils.m */,
+				9F7C22911ADCF69B0089DF56 /* UIImage+Crop.h */,
+				9F7C22921ADCF69B0089DF56 /* UIImage+Crop.m */,
+				9F7C22931ADCF69B0089DF56 /* UIImage+Resize.h */,
+				9F7C22941ADCF69B0089DF56 /* UIImage+Resize.m */,
+				9F7C22891ADC104E0089DF56 /* SBPhotoViewController.h */,
+				9F7C228A1ADC104E0089DF56 /* SBPhotoViewController.m */,
+				9F7C22831ADC07190089DF56 /* UIImage+FixOrientation.h */,
+				9F7C22841ADC07190089DF56 /* UIImage+FixOrientation.m */,
+				9F7C22851ADC07190089DF56 /* SBCameraController.h */,
+				9F7C22861ADC07190089DF56 /* SBCameraController.m */,
+				9F7C227E1ADBF7040089DF56 /* SBRecipePhotoViewController.h */,
+				9F7C227F1ADBF7040089DF56 /* SBRecipePhotoViewController.m */,
+				9F7C22801ADBF7040089DF56 /* SBRecipePhotoViewController.xib */,
+				9F7C22981ADCFB770089DF56 /* SBPhotoViewController.xib */,
+			);
+			name = RecipePhoto;
+			sourceTree = "<group>";
+		};
 		F7B9506E1A90653F006B9CD6 /* ZipArchive */ = {
 			isa = PBXGroup;
 			children = (
@@ -938,9 +987,11 @@
 				9F4870851ACC35EC00D9835D /* NutritionTableViewCell.xib in Resources */,
 				95784AA71AAF98610018DA34 /* SBLoginBodyweight.xib in Resources */,
 				952FBCB21A921C3500644431 /* CookTestImage02.png in Resources */,
+				9F7C22821ADBF7040089DF56 /* SBRecipePhotoViewController.xib in Resources */,
 				95784AA31AAF975B0018DA34 /* SBLoginBirthdateView.xib in Resources */,
 				951C67B21AA3ABFF00924763 /* #log#button#facebook.png in Resources */,
 				95E3A7A81A8B3C73002039E3 /* MetaBarViewController.xib in Resources */,
+				9F7C22991ADCFB770089DF56 /* SBPhotoViewController.xib in Resources */,
 				953B8AAC1A8AA43E00DEB3BC /* MetaMenuTableViewCell.xib in Resources */,
 				952FBCB81A921D9800644431 /* UIBar.xib in Resources */,
 			);
@@ -994,6 +1045,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F1141EA1AC98375007131B1 /* SBHealthstreamEventMessage.m in Sources */,
+				9F7C22881ADC07190089DF56 /* SBCameraController.m in Sources */,
 				954915F31A9CC6A90033ED02 /* SlideShow.m in Sources */,
 				950F19771A81576300B4EDC8 /* SBoxApplication.xcdatamodeld in Sources */,
 				952FBCB91A921D9800644431 /* UIBar.m in Sources */,
@@ -1009,6 +1061,8 @@
 				F7B9507E1A90653F006B9CD6 /* zip.c in Sources */,
 				9F1141E51AC98323007131B1 /* SBHealthstreamEventNutrition.m in Sources */,
 				95E3A7A71A8B3C73002039E3 /* MetaBarViewController.m in Sources */,
+				9F7C22951ADCF69B0089DF56 /* ViewUtils.m in Sources */,
+				9F7C228D1ADC104E0089DF56 /* SBPhotoViewController.m in Sources */,
 				9542E7481A9F6E3E00126F3A /* RASignal.m in Sources */,
 				9F4870841ACC35EC00D9835D /* NutritionTableViewCell.m in Sources */,
 				9F4810811ACE735C0025FD16 /* KAURLManager.m in Sources */,
@@ -1026,7 +1080,9 @@
 				95784A9E1AAF24AB0018DA34 /* SlimboxServices.m in Sources */,
 				95784A981AAE09D60018DA34 /* PUser.m in Sources */,
 				9542E74E1A9F71FE00126F3A /* RAFade.m in Sources */,
+				9F7C22871ADC07190089DF56 /* UIImage+FixOrientation.m in Sources */,
 				9F4810721ACE6AC40025FD16 /* KADataModelRecipe.m in Sources */,
+				9F7C22811ADBF7040089DF56 /* SBRecipePhotoViewController.m in Sources */,
 				950F19741A81576300B4EDC8 /* AppDelegate.m in Sources */,
 				B2E85C461AD426E80079265E /* SBRecipeNameTableViewCell.m in Sources */,
 				F7B9507B1A90653F006B9CD6 /* ioapi.c in Sources */,
@@ -1042,8 +1098,10 @@
 				9549EBC41A92C3E500B9A442 /* SBHealthStreamTableViewController.m in Sources */,
 				9542E74B1A9F6E5B00126F3A /* RALoadImage.m in Sources */,
 				F7B9507F1A90653F006B9CD6 /* ZipArchive.mm in Sources */,
+				9F7C22971ADCF69B0089DF56 /* UIImage+Resize.m in Sources */,
 				950F19711A81576300B4EDC8 /* main.m in Sources */,
 				9F48107E1ACE73290025FD16 /* KASettingsManager.m in Sources */,
+				9F7C22961ADCF69B0089DF56 /* UIImage+Crop.m in Sources */,
 				953B8A911A8A58E900DEB3BC /* SBDebugViewController.m in Sources */,
 				9F1141F31ACABA5A007131B1 /* PHealthstreamEventNutrition.m in Sources */,
 			);

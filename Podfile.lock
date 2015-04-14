@@ -23,18 +23,18 @@ PODS:
   - Bolts (1.1.4)
   - Facebook-iOS-SDK (3.23.2):
     - Bolts (~> 1.0)
-  - Mantle (1.5.4):
-    - Mantle/extobjc (= 1.5.4)
-  - Mantle/extobjc (1.5.4)
+  - Mantle (2.0):
+    - Mantle/extobjc (= 2.0)
+  - Mantle/extobjc (2.0)
   - MBProgressHUD (0.9.1)
   - NSLogger (1.5.1):
     - NSLogger/Standard (= 1.5.1)
   - NSLogger/Standard (1.5.1)
-  - Parse (1.7.0):
+  - Parse (1.7.1):
     - Bolts (~> 1.1)
-  - ParseFacebookUtils (1.7.0):
+  - ParseFacebookUtils (1.7.1):
     - Facebook-iOS-SDK (~> 3.23)
-    - Parse (~> 1.7.0)
+    - Parse (~> 1.7.1)
   - pop (1.0.7)
   - ReactiveCocoa (2.1.8):
     - ReactiveCocoa/Core (= 2.1.8)
@@ -58,11 +58,11 @@ SPEC CHECKSUMS:
   AFNetworking: 10e85a00bb0f475124e4ff2677bf15693b2c1523
   Bolts: f8e2f94edbf9fec7bb8de5ecaaa3aa6b7de6f64e
   Facebook-iOS-SDK: cd87f0b2f0c1d9574b44e8fa2baacc275524bac3
-  Mantle: 60acd0cd363e27d945bda0a6b8e90577112d28f3
+  Mantle: 17de73ef929db2234d76fde2aacfb89ab11c61e8
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034
-  Parse: 3c2d4e6ade7b59d31c0bc8106340c6b81b31bc0f
-  ParseFacebookUtils: f0c954253a65e945d7cb73400c33bc661f516b85
+  Parse: fa8ec29de6d82035635986c11946299fb1b38316
+  ParseFacebookUtils: fa09adf78372b589163b5a71a34d6ebc7eb83395
   pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
   ReactiveCocoa: f89f2e009a87951b50321bf9feb958823fcc617e
 

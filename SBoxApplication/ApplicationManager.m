@@ -20,6 +20,7 @@
 #import "Animation.h"
 #import <MBProgressHUD.h>
 #import "MetaBarViewController.h"
+#import "SBRecipePhotoViewController.h"
 
 /**
  */
@@ -326,6 +327,10 @@ Singleton(ApplicationManager)
     else if ([nameNIB isEqual:@"Login"])
     {
         self.activeController = [[SBLoginViewController alloc] initWithNibName:@"SBLoginViewController" bundle:nil];
+    }
+    else if ([nameNIB isEqual:@"Photo"])
+    {
+        self.activeController = [[SBRecipePhotoViewController alloc] initWithNibName:@"SBRecipePhotoViewController" bundle:nil];
     }
     else
     {

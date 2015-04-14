@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SBRecipePhotoViewController">
+            <connections>
+                <outlet property="dataView" destination="emR-G5-emA" id="efm-AO-2f2"/>
+                <outlet property="descriptionTextView" destination="kla-k0-Jtn" id="Zcq-Pq-STa"/>
+                <outlet property="descriptionView" destination="5Qj-eg-0vh" id="ZDA-f0-1nk"/>
+                <outlet property="finishButton" destination="DJw-fG-pZU" id="iKL-dw-dLF"/>
+                <outlet property="nameTextField" destination="Zee-bc-wnL" id="kqN-xU-Fb2"/>
+                <outlet property="picture" destination="HMK-sZ-xRu" id="ybN-K0-ibe"/>
+                <outlet property="pictureButton" destination="ddF-KP-y7d" id="fjL-wV-TGv"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AM7-Z3-l0y">
+                    <rect key="frame" x="139" y="203" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="283" y="308"/>
+        </view>
+        <view contentMode="scaleToFill" id="emR-G5-emA" userLabel="ViewData">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="640"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rezept Daten" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQj-bq-ydm">
+                    <rect key="frame" x="15" y="8" width="292" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rezept-Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzG-bv-XAu">
+                    <rect key="frame" x="14" y="218" width="296" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddF-KP-y7d">
+                    <rect key="frame" x="37" y="180" width="246" height="30"/>
+                    <color key="backgroundColor" red="0.046564607350000002" green="0.39214849369999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Neues Foto aufnehmen">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="makeNewPicture:" destination="-1" eventType="touchUpInside" id="aS8-Mb-Wk2"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zee-bc-wnL">
+                    <rect key="frame" x="14" y="242" width="293" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beschreibung für Ihren Berater" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kqa-pE-jbg">
+                    <rect key="frame" x="14" y="280" width="293" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kla-k0-Jtn">
+                    <rect key="frame" x="8" y="309" width="304" height="171"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="171" id="sSC-D1-rOE"/>
+                    </constraints>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HMK-sZ-xRu">
+                    <rect key="frame" x="37" y="37" width="246" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="d6c-TW-dve"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJw-fG-pZU">
+                    <rect key="frame" x="31" y="492" width="246" height="30"/>
+                    <color key="backgroundColor" red="0.046564607350000002" green="0.39214849369999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Abschliessen">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.3105701293" green="0.64080240669999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="DJw-fG-pZU" firstAttribute="top" secondItem="kla-k0-Jtn" secondAttribute="bottom" constant="12" id="0cx-pE-sk5"/>
+                <constraint firstItem="Zee-bc-wnL" firstAttribute="top" secondItem="wzG-bv-XAu" secondAttribute="bottom" constant="3" id="3kb-xj-gj7"/>
+                <constraint firstItem="SQj-bq-ydm" firstAttribute="leading" secondItem="emR-G5-emA" secondAttribute="leading" constant="15" id="7SX-I6-MvO"/>
+                <constraint firstItem="kla-k0-Jtn" firstAttribute="leading" secondItem="emR-G5-emA" secondAttribute="leadingMargin" id="A7b-Nu-1fa"/>
+                <constraint firstItem="ddF-KP-y7d" firstAttribute="top" secondItem="HMK-sZ-xRu" secondAttribute="bottom" constant="15" id="DJ2-rR-RfO"/>
+                <constraint firstItem="kla-k0-Jtn" firstAttribute="trailing" secondItem="emR-G5-emA" secondAttribute="trailingMargin" id="Dtb-NV-E2k"/>
+                <constraint firstAttribute="trailing" secondItem="DJw-fG-pZU" secondAttribute="trailing" constant="43" id="LCE-bs-NPe"/>
+                <constraint firstItem="SQj-bq-ydm" firstAttribute="top" secondItem="emR-G5-emA" secondAttribute="topMargin" id="MFW-mN-3e4"/>
+                <constraint firstItem="wzG-bv-XAu" firstAttribute="leading" secondItem="emR-G5-emA" secondAttribute="leading" constant="14" id="QcA-Ce-sTB"/>
+                <constraint firstItem="Zee-bc-wnL" firstAttribute="leading" secondItem="emR-G5-emA" secondAttribute="leading" constant="73" id="Tdp-gu-Nkb"/>
+                <constraint firstItem="ddF-KP-y7d" firstAttribute="trailing" secondItem="HMK-sZ-xRu" secondAttribute="trailing" id="Y9Y-YZ-eCc"/>
+                <constraint firstItem="Kqa-pE-jbg" firstAttribute="centerX" secondItem="kla-k0-Jtn" secondAttribute="centerX" id="ZOJ-Xd-LHr"/>
+                <constraint firstItem="Kqa-pE-jbg" firstAttribute="top" secondItem="Zee-bc-wnL" secondAttribute="bottom" constant="8" symbolic="YES" id="dK0-SD-3uA"/>
+                <constraint firstItem="kla-k0-Jtn" firstAttribute="top" secondItem="Kqa-pE-jbg" secondAttribute="bottom" constant="8" symbolic="YES" id="fBU-gw-758"/>
+                <constraint firstItem="ddF-KP-y7d" firstAttribute="centerX" secondItem="Kqa-pE-jbg" secondAttribute="centerX" id="fUv-Ry-PDS"/>
+                <constraint firstItem="DJw-fG-pZU" firstAttribute="leading" secondItem="emR-G5-emA" secondAttribute="leading" constant="31" id="gYS-2p-bNa"/>
+                <constraint firstAttribute="trailing" secondItem="Zee-bc-wnL" secondAttribute="trailing" constant="54" id="hDt-Tp-kNV"/>
+                <constraint firstItem="Kqa-pE-jbg" firstAttribute="trailing" secondItem="SQj-bq-ydm" secondAttribute="trailing" id="iL6-6M-NlH"/>
+                <constraint firstItem="Kqa-pE-jbg" firstAttribute="leading" secondItem="wzG-bv-XAu" secondAttribute="leading" id="iyA-ii-pfJ"/>
+                <constraint firstItem="HMK-sZ-xRu" firstAttribute="top" secondItem="SQj-bq-ydm" secondAttribute="bottom" constant="8" symbolic="YES" id="j0h-SF-alQ"/>
+                <constraint firstItem="HMK-sZ-xRu" firstAttribute="leading" secondItem="emR-G5-emA" secondAttribute="leading" constant="37" id="jPq-Op-5oj"/>
+                <constraint firstAttribute="trailing" secondItem="wzG-bv-XAu" secondAttribute="trailing" constant="10" id="ndc-ol-kQv"/>
+                <constraint firstItem="wzG-bv-XAu" firstAttribute="top" secondItem="ddF-KP-y7d" secondAttribute="bottom" constant="8" symbolic="YES" id="usf-MH-kCy"/>
+                <constraint firstItem="ddF-KP-y7d" firstAttribute="leading" secondItem="HMK-sZ-xRu" secondAttribute="leading" id="wL5-Mq-BjJ"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="656" y="334"/>
+        </view>
+        <view tag="5" contentMode="scaleToFill" id="5Qj-eg-0vh" userLabel="ViewDescription">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="640"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Neues Rezept anlegen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Zt-1G-J6N">
+                    <rect key="frame" x="-4" y="36" width="320" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p4A-1Z-QfH">
+                    <rect key="frame" x="37" y="394" width="246" height="30"/>
+                    <color key="backgroundColor" red="0.046564607350000002" green="0.39214849369999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Weiter">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="proceedToCamera:" destination="-1" eventType="touchUpInside" id="XfA-de-Vxh"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nvb-PG-7oF">
+                    <rect key="frame" x="32" y="77" width="249" height="446"/>
+                    <string key="text">Nachdem Sie "Weiter" geklickt haben können Sie das Rezept fotographieren und nachfolgend beschreiben. Diese Daten werden anschliessend vermerkt und Ihrem Ernährungsberater zur Bewertung übermittelt.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.3105701292791696" green="0.6408024066986755" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="1027" y="334"/>
+        </view>
+    </objects>
+</document>

@@ -14,6 +14,7 @@
  */
 @interface SlimboxServices : NSObject
 SingletonInit
+- (RACSignal*)loginWithFacebook;
 - (RACSignal*)facebookLoginUser;
 - (RACSignal*)facebookGetUserData;
 + (void)test;

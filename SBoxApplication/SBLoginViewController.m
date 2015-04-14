@@ -25,6 +25,13 @@
 @implementation SBLoginViewController
 
 /**
+ */
+- (void)initMetaBar
+{
+    
+}
+
+/**
  Login screen with animations.
  */
 - (void)viewDidLoad {
@@ -65,7 +72,8 @@
         return [[SlimboxServices instance] facebookGetUserData];
     }];
 
-    [loginSignal subscribeNext:^(id value){
+    [loginSignal subscribeNext:^(id value)
+    {
         Log(10, [ApplicationManager translate:@"LogInSuccess"],@"");
         [self removeLoginButttons];
         [self showEnterNameDialog];
