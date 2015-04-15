@@ -195,24 +195,24 @@ Singleton(SBApplicationModel)
 
 - (void)createNutrationEventWithImage:(UIImage*)image buttonType:(NSString*)buttonType calories:(NSNumber*)calories rating:(NSNumber*)rating title:(NSString*)title note:(NSString*)note
 {
-    PHealthstreamEvent *hsEvent = [PHealthstreamEvent object];
-    PHealthstreamEventNutrition *hsNutrition = [PHealthstreamEventNutrition object];
-    
-    // Create a fake nutrition event
-    hsNutrition.title = title;
-    hsNutrition.rating = @([ApplicationManager randomIntBetween:0 and:5]);
-    NSString *imageName = [images objectAtIndex:[ApplicationManager randomIntBetween:0 and:(images.count)-1]];
-    NSData *imageData = UIImagePNGRepresentation([UIImage imageNamed:imageName]);
-    hsNutrition.image = [PFFile fileWithName:@"image.png" data:imageData];
-    hsNutrition.calories  = @([ApplicationManager randomIntBetween:50 and:1600]);
-    hsNutrition.timestamp = mockupDate;
-    hsNutrition.buttonType = @"default";
-    [hsNutrition save];
-    
-    hsEvent.eventID = hsNutrition.objectId;
-    hsEvent.timestamp = mockupDate;
-    hsEvent.type = @"Nutrition";
-    BOOL isSaved = [hsEvent save];
+//    PHealthstreamEvent *hsEvent = [PHealthstreamEvent object];
+//    PHealthstreamEventNutrition *hsNutrition = [PHealthstreamEventNutrition object];
+//    
+//    // Create a fake nutrition event
+//    hsNutrition.title = title;
+//    hsNutrition.rating = @([ApplicationManager randomIntBetween:0 and:5]);
+//    NSString *imageName = [images objectAtIndex:[ApplicationManager randomIntBetween:0 and:(images.count)-1]];
+//    NSData *imageData = UIImagePNGRepresentation([UIImage imageNamed:imageName]);
+//    hsNutrition.image = [PFFile fileWithName:@"image.png" data:imageData];
+//    hsNutrition.calories  = @([ApplicationManager randomIntBetween:50 and:1600]);
+//    hsNutrition.timestamp = mockupDate;
+//    hsNutrition.buttonType = @"default";
+//    [hsNutrition save];
+//    
+//    hsEvent.eventID = hsNutrition.objectId;
+//    hsEvent.timestamp = mockupDate;
+//    hsEvent.type = @"Nutrition";
+//    BOOL isSaved = [hsEvent save];
     
 }
 
