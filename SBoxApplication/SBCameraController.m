@@ -46,7 +46,7 @@ NSString *const SBCameraErrorDomain = @"SBCameraErrorDomain";
     _flash = CameraFlashOff;
     
     self.view.backgroundColor = [UIColor clearColor];
-    self.view.autoresizingMask = UIViewAutoresizingNone;
+    //self.view.autoresizingMask = UIViewAutoresizingNone;
     
     self.preview = [[UIView alloc] initWithFrame:CGRectZero];
     self.preview.backgroundColor = [UIColor clearColor];

@@ -479,7 +479,6 @@
 		952FBCA21A9218DE00644431 /* HealthStream */ = {
 			isa = PBXGroup;
 			children = (
-				9F7C227D1ADBF6C60089DF56 /* RecipePhoto */,
 				9F4870761ACB314300D9835D /* Controller */,
 				9F4870751ACB312C00D9835D /* HealthstreamCells */,
 				952FBCA31A9219C000644431 /* HealthstreamEvents */,
@@ -540,6 +539,7 @@
 		953B8A8D1A8A58C600DEB3BC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9F7C227D1ADBF6C60089DF56 /* RecipePhoto */,
 				9F5C73801ACDC28400614C51 /* Recipe */,
 				9F4870771ACB315D00D9835D /* Debug */,
 				954915EB1A9CBC690033ED02 /* Login */,
@@ -830,6 +830,7 @@
 				9F7C22941ADCF69B0089DF56 /* UIImage+Resize.m */,
 				9F7C22891ADC104E0089DF56 /* SBPhotoViewController.h */,
 				9F7C228A1ADC104E0089DF56 /* SBPhotoViewController.m */,
+				9F7C22981ADCFB770089DF56 /* SBPhotoViewController.xib */,
 				9F7C22831ADC07190089DF56 /* UIImage+FixOrientation.h */,
 				9F7C22841ADC07190089DF56 /* UIImage+FixOrientation.m */,
 				9F7C22851ADC07190089DF56 /* SBCameraController.h */,
@@ -837,7 +838,6 @@
 				9F7C227E1ADBF7040089DF56 /* SBRecipePhotoViewController.h */,
 				9F7C227F1ADBF7040089DF56 /* SBRecipePhotoViewController.m */,
 				9F7C22801ADBF7040089DF56 /* SBRecipePhotoViewController.xib */,
-				9F7C22981ADCFB770089DF56 /* SBPhotoViewController.xib */,
 			);
 			name = RecipePhoto;
 			sourceTree = "<group>";

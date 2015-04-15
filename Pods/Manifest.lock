@@ -35,6 +35,7 @@ PODS:
   - ParseFacebookUtils (1.7.1):
     - Facebook-iOS-SDK (~> 3.23)
     - Parse (~> 1.7.1)
+  - PDKeychainBindingsController (0.0.1)
   - pop (1.0.7)
   - ReactiveCocoa (2.1.8):
     - ReactiveCocoa/Core (= 2.1.8)
@@ -51,6 +52,7 @@ DEPENDENCIES:
   - NSLogger
   - Parse
   - ParseFacebookUtils
+  - PDKeychainBindingsController
   - pop (~> 1.0)
   - ReactiveCocoa (= 2.1.8)
 
@@ -63,6 +65,7 @@ SPEC CHECKSUMS:
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034
   Parse: fa8ec29de6d82035635986c11946299fb1b38316
   ParseFacebookUtils: fa09adf78372b589163b5a71a34d6ebc7eb83395
+  PDKeychainBindingsController: fa8cb3cf99f2ea9240d61066ed0549f34e2cec3c
   pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
   ReactiveCocoa: f89f2e009a87951b50321bf9feb958823fcc617e
 

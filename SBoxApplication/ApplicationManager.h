@@ -22,6 +22,10 @@
  Application-Manager
  */
 @interface ApplicationManager : UIViewController <UIAlertViewDelegate>
+
+@property (nonatomic, strong) UIView *applicationView;
+
+
 SingletonInit
 - (void)setupNotifications;
 - (void)addMetaMenuBar;

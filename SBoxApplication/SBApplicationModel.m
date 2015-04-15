@@ -121,8 +121,8 @@ Singleton(SBApplicationModel)
 {
     [PFUser enableAutomaticUser];
     PFACL *defaultACL = [PFACL ACL];
-    [defaultACL setPublicReadAccess:YES];
-    [defaultACL setPublicWriteAccess:YES];
+    [defaultACL setPublicReadAccess:NO];
+    [defaultACL setPublicWriteAccess:NO];
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
 }
 
@@ -191,6 +191,31 @@ Singleton(SBApplicationModel)
         day = -(60*60*24);
     }
 }
+
+
+- (void)createNutrationEventWithImage:(UIImage*)image buttonType:(NSString*)buttonType calories:(NSNumber*)calories rating:(NSNumber*)rating title:(NSString*)title note:(NSString*)note
+{
+    PHealthstreamEvent *hsEvent = [PHealthstreamEvent object];
+    PHealthstreamEventNutrition *hsNutrition = [PHealthstreamEventNutrition object];
+    
+    // Create a fake nutrition event
+    hsNutrition.title = title;
+    hsNutrition.rating = @([ApplicationManager randomIntBetween:0 and:5]);
+    NSString *imageName = [images objectAtIndex:[ApplicationManager randomIntBetween:0 and:(images.count)-1]];
+    NSData *imageData = UIImagePNGRepresentation([UIImage imageNamed:imageName]);
+    hsNutrition.image = [PFFile fileWithName:@"image.png" data:imageData];
+    hsNutrition.calories  = @([ApplicationManager randomIntBetween:50 and:1600]);
+    hsNutrition.timestamp = mockupDate;
+    hsNutrition.buttonType = @"default";
+    [hsNutrition save];
+    
+    hsEvent.eventID = hsNutrition.objectId;
+    hsEvent.timestamp = mockupDate;
+    hsEvent.type = @"Nutrition";
+    BOOL isSaved = [hsEvent save];
+    
+}
+
 
 #pragma mark - Parse Integration
 
@@ -267,23 +292,25 @@ Singleton(SBApplicationModel)
 }
 
 /**
+ Get current User.
  */
-- (PUser*)getUser:(NSString*)facebookID
+- (PUser*)getUser
 {
-    PFQuery *query = [PUser query];
-    @weakify(self)
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
-     {
-         @strongify(self)
-         self.currentUser = [objects firstObject];
-         if (!error) {
-             NSLog(@"Successfully retrieved: %@", objects);
-         } else {
-             NSString *errorString = [[error userInfo] objectForKey:@"error"];
-             NSLog(@"Error: %@", errorString);
-         }
-     }];
-    return nil;
+    if (self.currentUser == nil)
+    {
+        if ([PFUser currentUser] && [[PFUser currentUser] isAuthenticated])
+        {
+            PFQuery *query = [PFQuery queryWithClassName:@"PUser"];
+            self.currentUser = (PUser*) [[query findObjects] firstObject];
+            
+        }
+        if (self.currentUser == nil)
+        {
+            self.currentUser = [PUser object];
+            [self.currentUser save];
+        }
+    }
+    return self.currentUser;
 }
 
 

@@ -15,4 +15,6 @@
 @interface SBPhotoViewController : UIViewController <MetaBarDelegateController>
 @property (nonatomic,weak)  SBRecipePhotoViewController  *delegate;
 @property (nonatomic,strong)  UIImage  *takenPhoto;
+@property (nonatomic,strong)  IBOutlet UIView  *cameraView;
+
 @end

@@ -12,6 +12,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "RACEXTScope.h"
 #import "SlimboxServices.h"
+#import <PDKeychainBindingsController.h>
 
 @interface AppDelegate ()
 @property (nonatomic, strong) RACSubject *startSubject;
@@ -22,30 +23,22 @@
 /**
  Execute SB Application.
  */
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    // Setup parse and start application
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
     [[ApplicationManager model] initModelWithApplicationID:@"Sl0QeeXPe0H5dVtfbAWXWxE0ho9TjdVXmaosKNAD" clientID:@"WHJHnUEaADH6MncIQjM7ykYyuKlSXEM50UYUNEAR"];
+//    [PFUser logOut];
     
-    // Send user signal
-    RACSignal *login = [SlimboxServices l]
+    //[[ApplicationManager model] setupMockupDataForUser];
     
-    
-    
-    self.startSubject = [RACSubject subject];
-    [self.startSubject subscribeNext:^(id next){
-        NSNumber *number = (NSNumber*)next;
-        if (![number boolValue])
-        {
-            [[ApplicationManager instance] execute:@"Login"];
-        }
-        else
-        {
-            [[ApplicationManager instance] execute:@"Healthstream"];
-        }
-    }];
-    
-    [[ApplicationManager model] userLoggedIn:self.startSubject];
+    if ([PFUser currentUser].objectId != nil && [[PFUser currentUser]isAuthenticated])
+    {
+        [[ApplicationManager instance] execute:@"Healthstream"];
+    }
+    else
+    {
+        [[ApplicationManager instance] execute:@"Login"];
+    }
+
     return YES;
 }
 

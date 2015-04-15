@@ -60,18 +60,32 @@ Singleton(SlimboxServices)
         PFUserResultBlock resultBlock = ^(PFUser *user, NSError *error) {
             if (user)
             {
-                [subscriber sendNext:user];
-            } else if (error)
+                if (user.isNew)
+                {
+                    Log(10, [ApplicationManager translate:@"FacebookUserLoggedInNew"], @"");
+                    [subscriber sendNext:user];
+                    [subscriber sendCompleted];
+                }
+                else
+                {
+                    Log(10, [ApplicationManager translate:@"FacebookUserLoggedInOld"], @"");
+                    [subscriber sendNext:user];
+                    [subscriber sendCompleted];
+                }
+            }
+            else if (error)
             {
                 [subscriber sendError:error];
-            } else
+            }
+            else
             {
-                // User cancelled login.
             }
         };
     
         NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location", @"email"];
-
+        
+        [PFFacebookUtils initializeFacebook];
+        
         Class fbUtils = NSClassFromString(@"PFFacebookUtils");
         if ([fbUtils respondsToSelector:@selector(logInWithPermissions:block:)])
         {
@@ -110,58 +124,12 @@ Singleton(SlimboxServices)
     return NO;
 }
 
-
-/**
-Service Login in user with Facebook.
- */
-- (RACSignal*)facebookLoginUser
-{
-    return [RACSignal createSignal:^RACDisposable*(id<RACSubscriber>subscriber){
-        // Set permissions required from the facebook user account
-        [PFFacebookUtils initializeFacebook];
-        NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location", @"email"];
-        [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
-            if (!user)
-            {
-                // #t: Inform User that he has to give the credentials
-                NSString *errorMessage = nil;
-                if (!error){
-                    Log(1, [ApplicationManager translate:@"FacebookError"], @"");
-                    errorMessage = @"Uh oh. The user cancelled the Facebook login.";
-                } else {
-                    Log(1, [ApplicationManager translate:@"FacebookError"], @"");
-                    errorMessage = [error localizedDescription];
-                }
-                [[ApplicationManager instance]systemError:[ApplicationManager translate:@"FacebookError"]
-                                                    error:nil option:nil completionBlock:nil];
-                [subscriber sendError:error];
-            }
-            else
-            {
-                if (user.isNew)
-                {
-                    Log(10, [ApplicationManager translate:@"FacebookUserLoggedInNew"], @"");
-                    [subscriber sendNext:@(true)];
-                    [subscriber sendCompleted];
-                } else
-                {
-                    Log(10, [ApplicationManager translate:@"FacebookUserLoggedInOld"], @"");
-                    [subscriber sendNext:@(true)];
-                    [subscriber sendCompleted];
-
-                }
-            }
-        }];
-        return nil;
-    }];
- }
-
 /**
  Service fetch data from Facebook.
  */
 - (RACSignal*)facebookGetUserData
 {
-    RACSignal *signal = [RACSignal createSignal:^RACDisposable*(id<RACSubscriber>subscriber)
+    return [RACSignal createSignal:^RACDisposable*(id<RACSubscriber>subscriber)
                          {
                              if (![[ApplicationManager model]getUserObject])
                              {
@@ -173,7 +141,7 @@ Service Login in user with Facebook.
                                  [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
                                      if (!error) {
                                          // Parse the data received
-                                         PUser *user = [PUser object];
+                                         PUser *user = [[ApplicationManager model] getUser];
                                          NSDictionary *userData = (NSDictionary *)result;
                                          NSString *facebookID = userData[@"id"];
                                          user.facebookID = facebookID;
@@ -189,7 +157,7 @@ Service Login in user with Facebook.
                                          
                                          if (userData[@"last_name"])
                                          {
-                                             user.surname = userData[@"last_name"];
+                                             user[@"surname"] = userData[@"last_name"];
                                          }
                                          
                                          if (userData[@"email"])
@@ -204,9 +172,7 @@ Service Login in user with Facebook.
                                              user.birthdate = [ApplicationManager stringToDate:birthdate];
                                          }
                                          
-                                         // #n: Check for security risks?
-                                         BOOL done = [user saveInBackground];
-                                         done = false;
+                                         [user saveInBackground];
                                      }
                                      [subscriber sendNext:@(true)];
                                  }];
@@ -218,7 +184,6 @@ Service Login in user with Facebook.
                             }
                             return nil;
                          }];
-    return signal;
 }
 
 #pragma mark - RecipeServices 

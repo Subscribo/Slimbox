@@ -68,7 +68,8 @@
  */
 - (IBAction)loginWithFacebook:(id)sender
 {
-    RACSignal *loginSignal = [[[SlimboxServices instance] facebookLoginUser] then:^RACSignal*{
+    RACSignal *loginSignal = [[[SlimboxServices instance] loginWithFacebook]
+                              then:^RACSignal*{
         return [[SlimboxServices instance] facebookGetUserData];
     }];
 
@@ -311,7 +312,7 @@
     [self.model.currentUser save];
     UIView *dialog = self.weightView;
     [Animation fadeOut:dialog duration:3 completionBlock:^(POPAnimation *anim, BOOL finished){}];
-    [[ApplicationManager instance] execute:@"HealthStream"];
+    [[ApplicationManager instance] execute:@"Healthstream"];
 }
 
 # pragma mark - PickerView Delegate Methods

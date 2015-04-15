@@ -35,5 +35,6 @@ SingletonInit
 - (void)createObjectRegisterWith:(kSBRegister)type;
 - (void)loadNext:(RACSubject*)subject option:(kSBEventsLoad)option;
 - (void)setupMockupDataForUser;
+- (PUser*)getUser;
 
 @end

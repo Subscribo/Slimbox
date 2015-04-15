@@ -28,7 +28,6 @@
 @property (nonatomic, strong) UIWindow *parentWindow;
 @property (nonatomic, strong) UIView *offscreenCanvasView;
 @property (nonatomic, strong) UIViewController *offscreenCanvasViewController;
-@property (nonatomic, strong) UIView *applicationView;
 @property (nonatomic, strong) UIView *frameworkView;
 @property (nonatomic, strong) UIViewController *activeController;
 @property (nonatomic, strong) UIWebView *webView;
@@ -344,7 +343,15 @@ Singleton(ApplicationManager)
 - (void)show
 {
     [[ApplicationManager instance] applicationViewRemoveAllViews];
-    self.activeController.view.frame = [ApplicationManager getApplicationBounds];
+    if (self.metaBarViewController.view.isHidden)
+    {
+        self.activeController.view.frame = [ApplicationManager getApplicationBounds];
+    }
+    else
+    {
+        self.activeController.view.frame = self.applicationView.frame;
+    }
+    
     if ([[self.activeController class] instanceMethodForSelector:@selector(initMetaBar)]) {
         [[MetaBarViewController instance] pushViewController:(id<MetaBarDelegateController>)self.activeController];
     }

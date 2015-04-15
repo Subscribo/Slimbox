@@ -61,8 +61,7 @@
  */
 - (void)showCameraDialog
 {
-    self.photoViewController = [[SBPhotoViewController alloc] initWithNibName:nil bundle:nil];
-    self.photoViewController.view.frame = self.view.frame;
+    self.photoViewController = [[SBPhotoViewController alloc] initWithNibName:@"SBPhotoViewController" bundle:nil];
     self.photoViewController.delegate = self;
     [[MetaBarViewController instance] pushViewController:self.photoViewController];
 }

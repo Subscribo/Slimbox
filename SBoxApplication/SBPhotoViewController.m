@@ -18,14 +18,21 @@
 @property (strong, nonatomic) UILabel *errorLabel;
 @property (nonatomic,strong) IBOutlet UIButton *makePhoto;
 @property (nonatomic,strong) IBOutlet UIButton *flashButton;
-@property (nonatomic,strong) IBOutlet UIView *cameraView;
 @end
 
 @implementation SBPhotoViewController
 
 - (void)initMetaBar
 {
-    
+    // setup quitbutton
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    [[MetaBarViewController instance]setTitle:@"Fotobericht"];
+    [[MetaBarViewController instance]showRightButtonLeft:false showRightButtonRight:true];
+    [[[MetaBarViewController instance] setButtonForRightButtonRight:button] subscribeNext:^(id x)
+     {
+         [[MetaBarViewController instance]popViewController];
+         [[MetaBarViewController instance]popViewController];
+     }];
 }
 
 /**
@@ -36,11 +43,13 @@
 
     self.view.backgroundColor = [UIColor blackColor];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    self.view.frame = [ApplicationManager instance].applicationView.bounds;
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     
     self.camera = [[SBCameraController alloc] initWithQuality:CameraQualityPhoto andPosition:CameraPositionBack];
     self.camera.fixOrientationAfterCapture = NO;
+    self.camera.view.frame = self.cameraView.frame;
     [self.cameraView addSubview:self.camera.view];
     
     // take the required actions on a device change

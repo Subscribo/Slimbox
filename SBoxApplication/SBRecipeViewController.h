@@ -14,5 +14,5 @@
 @property (nonatomic, strong) IBOutlet UILabel *name;
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
-
+@property (nonatomic)BOOL isHidden;
 @end
