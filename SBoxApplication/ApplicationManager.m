@@ -484,6 +484,14 @@ Singleton(ApplicationManager)
     [alert show];
 }
 
+
+- (void)systemInfo:(NSString*)errorStringTag
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[ApplicationManager translate:@"Information"] message:[ApplicationManager translate:errorStringTag] delegate:self cancelButtonTitle:[ApplicationManager translate:@"Ok"] otherButtonTitles:nil];
+    [alert show];
+}
+
+
 /**
  Alert-View Delegate for System-Errors.
  */

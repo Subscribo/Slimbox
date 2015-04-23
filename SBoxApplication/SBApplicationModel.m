@@ -104,12 +104,19 @@ Singleton(SBApplicationModel)
     
     for (PHealthstreamEvent *object in objects)
     {
-        query = [PFQuery queryWithClassName:@"PHealthstreamEventNutrition"];
-        [query whereKey:@"objectId" equalTo:object.eventID];
-        PHealthstreamEventNutrition *resultObject = (PHealthstreamEventNutrition*)[query getFirstObject];
-        if (resultObject)
+        @try
         {
-            [self.hsItemsCache addObject:resultObject];
+            query = [PFQuery queryWithClassName:@"PHealthstreamEventNutrition"];
+            [query whereKey:@"objectId" equalTo:object.eventID];
+            PHealthstreamEventNutrition *resultObject = (PHealthstreamEventNutrition*)[query getFirstObject];
+            if (resultObject)
+            {
+                [self.hsItemsCache addObject:resultObject];
+            }
+        }
+        @catch (NSException *exception) {
+        }
+        @finally {
         }
     }
 }

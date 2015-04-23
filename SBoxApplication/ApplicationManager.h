@@ -27,6 +27,7 @@
 
 
 SingletonInit
+- (void)systemInfo:(NSString*)errorStringTag;
 - (void)setupNotifications;
 - (void)addMetaMenuBar;
 - (void)hideMetaMenuBar;
