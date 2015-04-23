@@ -312,6 +312,7 @@
     [self.model.currentUser save];
     UIView *dialog = self.weightView;
     [Animation fadeOut:dialog duration:3 completionBlock:^(POPAnimation *anim, BOOL finished){}];
+    [[ApplicationManager model] setupMockupDataForUser];
     [[ApplicationManager instance] execute:@"Healthstream"];
 }
 

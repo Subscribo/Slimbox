@@ -26,7 +26,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[ApplicationManager model] initModelWithApplicationID:@"Sl0QeeXPe0H5dVtfbAWXWxE0ho9TjdVXmaosKNAD" clientID:@"WHJHnUEaADH6MncIQjM7ykYyuKlSXEM50UYUNEAR"];
-    //[PFUser logOut];
+    [PFUser logOut];
     //[[ApplicationManager model] setupMockupDataForUser];
     
     if ([PFUser currentUser].objectId != nil && [[PFUser currentUser]isAuthenticated])
@@ -35,7 +35,6 @@
     }
     else
     {
-        [[ApplicationManager model] setupMockupDataForUser];
         [[ApplicationManager instance] execute:@"Login"];
     }
 
