@@ -17,6 +17,7 @@ SingletonInit
 - (RACSignal*)loginWithFacebook;
 - (RACSignal*)facebookLoginUser;
 - (RACSignal*)facebookGetUserData;
++ (RACSignal*)loginWithTwitter;
 + (void)test;
 + (RACSignal*)queryRecipeWithID:(NSString*)ID;
 + (RACSignal*)loadImageNamed:(NSString*)imageURL forImageView:(UIImageView*)imageView placeholderImage:(UIImage*)image;

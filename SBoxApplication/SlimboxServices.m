@@ -222,7 +222,94 @@ Singleton(SlimboxServices)
     }];
 }
 
+/**
+ Login to Twitter.
+ */
++ (RACSignal*)loginWithTwitter
+{
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber)
+    {
+        [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error)
+        {
+            BOOL completed = false;
+            if (![PFTwitterUtils isLinkedWithUser:user])
+            {
+                [PFTwitterUtils linkUser:user block:^(BOOL succeeded, NSError *error)
+                {
+                    if ([PFTwitterUtils isLinkedWithUser:user])
+                    {
+                        NSLog(@"Woohoo, user logged in with Twitter!");
+                    }
+                }];
+            }
+            
+            if (!user)
+            {
+                completed = false;
+            } else if (user.isNew)
+            {
+                completed = true;
+            } else
+            {
+                completed = true;
+            }
+            
+        if (completed)
+        {
+            // TODO find a way to fetch details with Twitter..
+            PUser *parseUser = [[ApplicationManager model] getUser];
 
+            NSString * requestString = [NSString stringWithFormat:@"https://api.twitter.com/1.1/users/show.json?screen_name=%@", user.username];
+            NSURL *verify = [NSURL URLWithString:requestString];
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:verify];
+            [[PFTwitterUtils twitter] signRequest:request];
+            NSURLResponse *response = nil;
+            NSData *data = [NSURLConnection sendSynchronousRequest:request
+                                                 returningResponse:&response
+                                                             error:&error];
+            if ( error == nil)
+            {
+                /**
+                 #t: fetch possible data from twitter.
+                NSDictionary* result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+                
+                NSString * names = [result objectForKey:@"name"];
+                NSMutableArray * array = [NSMutableArray arrayWithArray:[names componentsSeparatedByString:@" "]];
+                if ( array.count > 1){
+                    [parseUser setSurname:(NSString*)[array lastObject]];
+                    
+                    [array removeLastObject];
+                    [parseUser setName:(NSString *)[array componentsJoinedByString:@" " ]];
+                }
+                 */
+            }
+            [subscriber sendNext:user];
+        }
+        else
+        {
+            [subscriber sendError:error];
+        }
+        }];
+        return nil;
+    }];
+}
+
+/**
+ Signup with Email 
+ */
+- (void)loginWithEmail:(NSString*)email firstName:(NSString*)firstName lastName:(NSString*)lastName password:(NSString*)password
+{
+    PFUser *user = [PFUser user];
+    
+    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            // Hooray! Let them use the app now.
+        } else {
+            NSString *errorString = [error userInfo][@"error"];
+            // Show the errorString somewhere and let the user try again.
+        }
+    }];
+}
 
 
 @end

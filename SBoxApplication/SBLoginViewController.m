@@ -95,7 +95,16 @@
 // #t: To be implemented the way Facebook is implemented.
 - (IBAction)loginWithTwitter:(id)sender
 {
+    RACSignal *loginTwitter = [SlimboxServices loginWithTwitter];
+    [loginTwitter subscribeNext:^(id x) {
+        Log(10, [ApplicationManager translate:@"Twitter LogInSuccess"],@"");
+        [self removeLoginButttons];
+        [self showEnterNameDialog];
+    }];
     
+    [loginTwitter subscribeError:^(NSError *error) {
+        [[ApplicationManager instance]systemError:@"Twitter Error" error:error option:0 completionBlock:nil];
+    }];
 }
 
 /**
@@ -312,7 +321,6 @@
     [self.model.currentUser save];
     UIView *dialog = self.weightView;
     [Animation fadeOut:dialog duration:3 completionBlock:^(POPAnimation *anim, BOOL finished){}];
-    [[ApplicationManager model] setupMockupDataForUser];
     [[ApplicationManager instance] execute:@"Healthstream"];
 }
 

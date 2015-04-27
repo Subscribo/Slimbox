@@ -596,6 +596,7 @@
 		954915EB1A9CBC690033ED02 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				9F9C04DD1AED4CC900BF1AC0 /* Parse-Login */,
 				954915EC1A9CBC930033ED02 /* SBLoginViewController.h */,
 				954915ED1A9CBC930033ED02 /* SBLoginViewController.m */,
 				954915EE1A9CBC930033ED02 /* SBLoginViewController.xib */,
@@ -840,6 +841,13 @@
 				9F7C22801ADBF7040089DF56 /* SBRecipePhotoViewController.xib */,
 			);
 			name = RecipePhoto;
+			sourceTree = "<group>";
+		};
+		9F9C04DD1AED4CC900BF1AC0 /* Parse-Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Parse-Login";
 			sourceTree = "<group>";
 		};
 		F7B9506E1A90653F006B9CD6 /* ZipArchive */ = {

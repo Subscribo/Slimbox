@@ -11,6 +11,7 @@
 #import "PHealthstreamEvent.h"
 #import "PHealthstreamEventNutrition.h"
 #import "ApplicationManager.h"
+#import <ParseFacebookUtils/PFFacebookUtils.h>
 
 #define DAY (60*60*24)
 #define FIVEDAYS DAY*5
@@ -34,8 +35,17 @@ Singleton(SBApplicationModel)
 - (void)initModelWithApplicationID:(NSString*)applicationID clientID:(NSString*)clientID
 {
     // do all here.
+    
     [Parse setApplicationId:applicationID clientKey:clientID];
-    [self setACL];
+    
+    [PFFacebookUtils initializeFacebook];
+    [PFTwitterUtils initializeWithConsumerKey:@"DK1MZdpFIUpsc9hZ8LkrV9sJd" consumerSecret:@"RIuCEQn3wPzH9NbKIuZ0iFJDOnCj9IForDdJuBCBDcMfQ9MGP1"];
+    
+    // Set default ACLs
+    PFACL *defaultACL = [PFACL ACL];
+    [defaultACL setPublicReadAccess:YES];
+    [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
+
     [PUser registerSubclass];
     [PHealthstreamEvent registerSubclass];
     [PHealthstreamEventNutrition registerSubclass];
