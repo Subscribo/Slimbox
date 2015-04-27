@@ -12,6 +12,13 @@
 /**
  Services is responsible for all REST Methods based on Signals. 
  */
+
+typedef enum {
+    kSBEmailRegisterWrongPassword,
+    kSBEmailRegisterSignedUp,
+    kSBEmailRegisterLoggedIn
+} kSBEmailRegister;
+
 @interface SlimboxServices : NSObject
 SingletonInit
 - (RACSignal*)loginWithFacebook;
@@ -21,4 +28,6 @@ SingletonInit
 + (void)test;
 + (RACSignal*)queryRecipeWithID:(NSString*)ID;
 + (RACSignal*)loadImageNamed:(NSString*)imageURL forImageView:(UIImageView*)imageView placeholderImage:(UIImage*)image;
++ (RACSignal*)loginWithEmail:(NSString*)email password:(NSString*)password firstName:(NSString*)firstName lastName:(NSString*)lastName;
+
 @end

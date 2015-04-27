@@ -42,6 +42,11 @@
 @property (nonatomic, strong)IBOutlet UITextField *emailTextField;
 @property (nonatomic, strong)IBOutlet UILabel *emailLabel;
 
+// Password
+@property (nonatomic, strong)IBOutlet UIView *passwordView;
+@property (nonatomic, strong)IBOutlet UITextField *passwordTextField;
+@property (nonatomic, strong)IBOutlet UILabel *passwordLabel;
+
 // Gender
 @property (nonatomic, strong)IBOutlet UIView *genderView;
 @property (nonatomic, strong)IBOutlet UIPickerView *genderPicker;

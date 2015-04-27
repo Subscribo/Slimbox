@@ -23,8 +23,7 @@
 @property (nonatomic, strong) NSString *twitterID;
 @property (nonatomic, strong) NSString *emailID;
 @property (nonatomic, strong) NSNumber *registerType;
-@property (nonatomic, strong) PFUser *parseUser;
-
+@property (nonatomic, strong) NSString *password;
 + (NSString *)parseClassName;
 
 @end

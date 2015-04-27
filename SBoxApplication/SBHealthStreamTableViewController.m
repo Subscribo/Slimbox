@@ -20,6 +20,7 @@
 #import "KARecipeManager.h"
 #import "MetaBarViewController.h"
 #import "SBRecipePhotoViewController.h"
+#import "Debug.h"
 
 @interface SBHealthStreamTableViewController ()
 @property (nonatomic, strong) NSMutableArray *hsEvents;
@@ -54,7 +55,11 @@
     self.view.backgroundColor = [UIColor clearColor];
     self.view.layer.opacity = 0;
     [Animation fadeIn:self.view duration:3 completionBlock:^(POPAnimation *anim, BOOL finished){}];
-    //[[ApplicationManager model]setupMockupDataForUser]; // Create data for testing purposes
+
+#ifdef GENERATEMOCKUPDATA
+    [[ApplicationManager model]setupMockupDataForUser]; // Create data for testing purposes
+#endif
+
     [self loadNextForSignal];
 }
 

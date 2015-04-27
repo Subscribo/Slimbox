@@ -293,19 +293,42 @@ Singleton(SBApplicationModel)
 /**
  Create a default user object.
  */
-- (void)createObjectRegisterWith:(kSBRegister)type
+- (PUser*)createUser:(kSBRegister)type
 {
-    self.currentUser = [PUser object];
+    self.currentUser = [self getUser];
     
-    if (type == kSBRegisterWithEmail)
-    {
-        self.currentUser.name = [ApplicationManager translate:@"Please enter your first name"];
-        self.currentUser.surname = [ApplicationManager translate:@"Please enter your last name"];
-        self.currentUser.email = [ApplicationManager translate:@"Please enter your email"];
-    }
+    // default values
+    self.currentUser.name = [ApplicationManager translate:@"Vorname"];
+    self.currentUser.surname = [ApplicationManager translate:@"Nachname"];
+    self.currentUser.email = [ApplicationManager translate:@"Email"];
+    self.currentUser.gender = [ApplicationManager translate:@"Geschlecht"];
+    self.currentUser.postalcode = [ApplicationManager translate:@"Postleitzahl"];
+    self.currentUser.country = [ApplicationManager translate:@"Land"];
+    self.currentUser.street = [ApplicationManager translate:@"Strasse"];
+    self.currentUser.password = @"";
+    
+    // default values
     self.currentUser.bodysize = @(170);
     self.currentUser.bodyweight = @(70);
     self.currentUser.birthdate = [NSDate new];
+    self.currentUser.registerType = @(type);
+    
+    // category values here
+    if (type == kSBRegisterWithEmail)
+    {
+        self.currentUser.registerType = @(kSBRegisterWithEmail);
+    }
+    else if (type == kSBRegisterWithFacebook)
+    {
+        self.currentUser.registerType = @(kSBRegisterWithFacebook);
+    }
+    else if (type == kSBRegisterWithTwitter)
+    {
+        self.currentUser.registerType = @(kSBRegisterWithTwitter);
+    }
+    
+    [self.currentUser saveInBackground];
+    return self.currentUser;
 }
 
 /**

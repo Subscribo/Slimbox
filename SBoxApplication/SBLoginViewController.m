@@ -68,6 +68,7 @@
  */
 - (IBAction)loginWithFacebook:(id)sender
 {
+    [self.model createUser:kSBRegisterWithFacebook];
     RACSignal *loginSignal = [[[SlimboxServices instance] loginWithFacebook]
                               then:^RACSignal*{
         return [[SlimboxServices instance] facebookGetUserData];
@@ -95,6 +96,7 @@
 // #t: To be implemented the way Facebook is implemented.
 - (IBAction)loginWithTwitter:(id)sender
 {
+    [self.model createUser:kSBRegisterWithTwitter];
     RACSignal *loginTwitter = [SlimboxServices loginWithTwitter];
     [loginTwitter subscribeNext:^(id x) {
         Log(10, [ApplicationManager translate:@"Twitter LogInSuccess"],@"");
@@ -113,7 +115,7 @@
 - (IBAction)loginWithRegister:(id)sender
 {
     [self removeLoginButttons];
-    [self.model createObjectRegisterWith:kSBRegisterWithEmail];
+    [self.model createUser:kSBRegisterWithEmail];
     [self showEnterNameDialog];
 }
 
@@ -153,6 +155,7 @@
         
         UIView *dialog = self.nameView;
         [Animation fadeOut:dialog duration:3 completionBlock:^(POPAnimation *anim, BOOL finished){}];
+        
         [self showEnterEmailDialog];
     }
     else
@@ -169,6 +172,7 @@
  */
 - (void)showEnterEmailDialog
 {
+    // type != email register
     [ApplicationManager getNib:@"SBLoginEmail" owner:self];
     UIView *dialog = self.emailView;
     dialog.frame = CGRectMake(0, 0, [ApplicationManager getScreenWidth], dialog.frame.size.height);
@@ -194,12 +198,61 @@
 
         UIView *dialog = self.emailView;
         [Animation fadeOut:dialog duration:3 completionBlock:^(POPAnimation *anim, BOOL finished){}];
-        [self showEnterGenderDialog];
+        
+        // if type == regist by email
+        int test = [self.model.currentUser.registerType intValue];
+        if ([self.model.currentUser.registerType intValue]==kSBRegisterWithEmail)
+        {
+            [self showEnterPasswordDialog];
+        }
+        else
+        {
+            [self showEnterGenderDialog];
+        }
     }
     else
     {
         [[ApplicationManager instance] systemError:[ApplicationManager translate:@"Bitte füllen Sie die Felder richtig aus um fortzufahren."] error:nil option:nil completionBlock:nil];
     }
+}
+
+#pragma mark - Enter Email Dialog
+
+/**
+ Loads and shows the dialog for enter the name.
+ */
+- (void)showEnterPasswordDialog
+{
+    [ApplicationManager getNib:@"SBLoginPassword" owner:self];
+    UIView *dialog = self.passwordView;
+    dialog.frame = CGRectMake(0, 0, [ApplicationManager getScreenWidth], dialog.frame.size.height);
+    [self.view addSubview:dialog];
+    [Animation fadeIn:dialog duration:3 completionBlock:^(POPAnimation *anim, BOOL finished){}];
+    [self.next addTarget:nil action:@selector(enterEmailNext:) forControlEvents:UIControlEventTouchUpInside];
+    self.validated = true;
+    self.passwordTextField.text = self.model.currentUser[@"password"];
+}
+
+/**
+ Validate and next.
+ */
+- (IBAction)enterPasswordNext:(id)sender
+{
+    // signal send next
+    self.model.currentUser.password = self.passwordTextField.text;
+    RACSignal *loginEmail = [SlimboxServices loginWithEmail:self.model.currentUser.email password:self.model.currentUser.password firstName:self.model.currentUser.name lastName:self.model.currentUser.surname];
+    
+    @weakify(self)
+    [loginEmail subscribeNext:^(id x) {
+        NSNumber *resultNumber = (NSNumber*)x;
+        int result = [resultNumber intValue];
+        @strongify(self)
+        if (result == kSBEmailRegisterSignedUp || result == kSBEmailRegisterLoggedIn)
+        {
+            [self.model.currentUser saveInBackground];
+            [self showEnterGenderDialog];
+        }
+    }];
 }
 
 
@@ -321,6 +374,11 @@
     [self.model.currentUser save];
     UIView *dialog = self.weightView;
     [Animation fadeOut:dialog duration:3 completionBlock:^(POPAnimation *anim, BOOL finished){}];
+    
+#ifdef GENERATETESTDATA
+    [[ApplicationManager model] m]
+#endif
+    
     [[ApplicationManager instance] execute:@"Healthstream"];
 }
 

@@ -99,6 +99,8 @@
 		9F48708A1ACC59D400D9835D /* SBHealthstreamCellBottomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F4870881ACC59D400D9835D /* SBHealthstreamCellBottomViewController.xib */; };
 		9F5C73891ACDC40E00614C51 /* SBRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F5C73871ACDC40E00614C51 /* SBRecipeViewController.m */; };
 		9F5C738A1ACDC40E00614C51 /* SBRecipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C73881ACDC40E00614C51 /* SBRecipeViewController.xib */; };
+		9F62D0741AEE260300F283A4 /* Debug.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F62D0731AEE260300F283A4 /* Debug.m */; };
+		9F62D0761AEE2B8000F283A4 /* SBLoginPassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F62D0751AEE2B8000F283A4 /* SBLoginPassword.xib */; };
 		9F7C22811ADBF7040089DF56 /* SBRecipePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C227F1ADBF7040089DF56 /* SBRecipePhotoViewController.m */; };
 		9F7C22821ADBF7040089DF56 /* SBRecipePhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F7C22801ADBF7040089DF56 /* SBRecipePhotoViewController.xib */; };
 		9F7C22871ADC07190089DF56 /* UIImage+FixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7C22841ADC07190089DF56 /* UIImage+FixOrientation.m */; };
@@ -289,6 +291,9 @@
 		9F5C73861ACDC40E00614C51 /* SBRecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SBRecipeViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		9F5C73871ACDC40E00614C51 /* SBRecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SBRecipeViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9F5C73881ACDC40E00614C51 /* SBRecipeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBRecipeViewController.xib; sourceTree = "<group>"; };
+		9F62D0721AEE260300F283A4 /* Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug.h; sourceTree = "<group>"; };
+		9F62D0731AEE260300F283A4 /* Debug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Debug.m; sourceTree = "<group>"; };
+		9F62D0751AEE2B8000F283A4 /* SBLoginPassword.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBLoginPassword.xib; sourceTree = "<group>"; };
 		9F7C227E1ADBF7040089DF56 /* SBRecipePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRecipePhotoViewController.h; sourceTree = "<group>"; };
 		9F7C227F1ADBF7040089DF56 /* SBRecipePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRecipePhotoViewController.m; sourceTree = "<group>"; };
 		9F7C22801ADBF7040089DF56 /* SBRecipePhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBRecipePhotoViewController.xib; sourceTree = "<group>"; };
@@ -418,6 +423,7 @@
 		950F196D1A81576300B4EDC8 /* SBoxApplication */ = {
 			isa = PBXGroup;
 			children = (
+				9F62D0711AEE25D500F283A4 /* Utils */,
 				9F4810671ACE67200025FD16 /* KochAbo */,
 				9532595A1AB8950900C3E022 /* Configuration */,
 				95784A9B1AAF23F90018DA34 /* Services */,
@@ -606,6 +612,7 @@
 				95784AA61AAF98610018DA34 /* SBLoginBodyweight.xib */,
 				95784AA81AAF98C20018DA34 /* SBLoginSize.xib */,
 				95784AAA1AAF98EB0018DA34 /* SBLoginEmail.xib */,
+				9F62D0751AEE2B8000F283A4 /* SBLoginPassword.xib */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -820,6 +827,15 @@
 			name = Recipe;
 			sourceTree = "<group>";
 		};
+		9F62D0711AEE25D500F283A4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9F62D0721AEE260300F283A4 /* Debug.h */,
+				9F62D0731AEE260300F283A4 /* Debug.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		9F7C227D1ADBF6C60089DF56 /* RecipePhoto */ = {
 			isa = PBXGroup;
 			children = (
@@ -990,6 +1006,7 @@
 				9F1141E61AC98323007131B1 /* SBHealthstreamEventNutrition.xib in Resources */,
 				953B8AA31A8A62BE00DEB3BC /* MetaMenuTableViewController.xib in Resources */,
 				952FBCB01A921C3500644431 /* CookTestImage04.png in Resources */,
+				9F62D0761AEE2B8000F283A4 /* SBLoginPassword.xib in Resources */,
 				9F1141EB1AC98375007131B1 /* SBHealthstreamEventMessage.xib in Resources */,
 				953B8AA51A8A640600DEB3BC /* MetaMenu.plist in Resources */,
 				9F4870851ACC35EC00D9835D /* NutritionTableViewCell.xib in Resources */,
@@ -1081,6 +1098,7 @@
 				9F4870891ACC59D400D9835D /* SBHealthstreamCellBottomViewController.m in Sources */,
 				950F199F1A8230C000B4EDC8 /* ApplicationManager.m in Sources */,
 				953B8AA21A8A62BE00DEB3BC /* MetaMenuTableViewController.m in Sources */,
+				9F62D0741AEE260300F283A4 /* Debug.m in Sources */,
 				95E3A79F1A8B0D5C002039E3 /* Evaluate.m in Sources */,
 				9F48107B1ACE6AF20025FD16 /* KADataModelWine.m in Sources */,
 				95E3A79C1A8B0D52002039E3 /* AccelerationAnimation.m in Sources */,

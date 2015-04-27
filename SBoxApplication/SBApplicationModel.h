@@ -32,7 +32,7 @@ SingletonInit
 - (void)initModelWithApplicationID:(NSString*)applicationID clientID:(NSString*)clientID;
 - (void)userLoggedIn:(RACSubject*)subject;
 - (BOOL)getUserObject;
-- (void)createObjectRegisterWith:(kSBRegister)type;
+- (PUser*)createUser:(kSBRegister)type;
 - (void)loadNext:(RACSubject*)subject option:(kSBEventsLoad)option;
 - (void)setupMockupDataForUser;
 - (PUser*)getUser;

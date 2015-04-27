@@ -256,7 +256,6 @@ Singleton(SlimboxServices)
             
         if (completed)
         {
-            // TODO find a way to fetch details with Twitter..
             PUser *parseUser = [[ApplicationManager model] getUser];
 
             NSString * requestString = [NSString stringWithFormat:@"https://api.twitter.com/1.1/users/show.json?screen_name=%@", user.username];
@@ -297,17 +296,45 @@ Singleton(SlimboxServices)
 /**
  Signup with Email 
  */
-- (void)loginWithEmail:(NSString*)email firstName:(NSString*)firstName lastName:(NSString*)lastName password:(NSString*)password
++ (RACSignal*)loginWithEmail:(NSString*)email password:(NSString*)password firstName:(NSString*)firstName lastName:(NSString*)lastName
 {
-    PFUser *user = [PFUser user];
-    
-    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-            // Hooray! Let them use the app now.
-        } else {
-            NSString *errorString = [error userInfo][@"error"];
-            // Show the errorString somewhere and let the user try again.
+    __block NSString *queryEmail = email;
+    __block NSString *queryPassword = password;
+    __block NSString *queryUsername = [NSString stringWithFormat:@"%@ %@", firstName,lastName];
+    __block PUser *user;
+    @weakify(self)
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        
+        // login
+        PFUser *user = [PFUser logInWithUsername:queryUsername password:queryPassword];
+        
+        // signup
+        if (!user)
+        {
+            // signup
+            user = [PFUser user];
+            user.username = queryUsername;
+            user.email = queryEmail;
+            user.password = queryPassword;
+            
+            [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (!error)
+                {
+                    [user saveInBackground];
+                    [subscriber sendNext:@(kSBEmailRegisterSignedUp)];
+                }
+                else
+                {
+                    [subscriber sendError:error];
+                }
+            }];
         }
+        else
+        {
+            [user saveInBackground];
+            [subscriber sendNext:@(kSBEmailRegisterLoggedIn)];
+        }
+        return nil;
     }];
 }
 

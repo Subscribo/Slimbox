@@ -24,7 +24,7 @@
 @dynamic twitterID;
 @dynamic emailID;
 @dynamic registerType;
-@dynamic parseUser;
+@dynamic password;
 
 + (NSString *)parseClassName {
     return @"PUser";

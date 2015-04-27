@@ -1,4 +1,4 @@
-/*
+/**
  * SB - Engine
  * Author:		Gerhard Zeissl
  * Date:		01012015
@@ -13,7 +13,7 @@
 #import "RACEXTScope.h"
 #import "SlimboxServices.h"
 #import <PDKeychainBindingsController.h>
-
+#import "Debug.h"
 @interface AppDelegate ()
 @property (nonatomic, strong) RACSubject *startSubject;
 @end
@@ -25,16 +25,21 @@
  */
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    LoggerApp(10, @"Init Application");
     [[ApplicationManager model] initModelWithApplicationID:@"Sl0QeeXPe0H5dVtfbAWXWxE0ho9TjdVXmaosKNAD" clientID:@"WHJHnUEaADH6MncIQjM7ykYyuKlSXEM50UYUNEAR"];
-    //[PFUser logOut];
     
+#ifdef GENERATEMOCKUPDATA
+    [PFUser logOut];
+#endif
     
     if ([PFUser currentUser].objectId != nil && [[PFUser currentUser]isAuthenticated])
     {
+        LoggerApp(10, @"Authentification - Go to Healthstream");
         [[ApplicationManager instance] execute:@"Healthstream"];
     }
     else
     {
+        LoggerApp(10, @"Authentification - Go to Login");
         [[ApplicationManager instance] execute:@"Login"];
     }
 
